@@ -279,7 +279,7 @@ $.extend($.validator, {
 		errorLabelContainer: $( [] ),
 		onsubmit: true,
 		ignore: [],
-		ignoreTitle: false,
+		ignoreEquipmentName: false,
 		onfocusin: function(element) {
 			this.lastActive = element;
 				
@@ -668,8 +668,8 @@ $.extend($.validator, {
 			return this.findDefined(
 				this.customMessage( element.name, method ),
 				this.customMetaMessage( element, method ),
-				// title is never undefined, so handle empty string as undefined
-				!this.settings.ignoreTitle && element.title || undefined,
+				// EquipmentName is never undefined, so handle empty string as undefined
+				!this.settings.ignoreEquipmentName && element.EquipmentName || undefined,
 				$.validator.messages[method],
 				"<strong>Warning: No message defined for " + element.name + "</strong>"
 			);
@@ -988,7 +988,7 @@ $.extend($.validator, {
 			}
 		}
 		
-		// To support custom messages in metadata ignore rule methods titled "messages"
+		// To support custom messages in metadata ignore rule methods EquipmentNamed "messages"
 		if (rules.messages) {
 			delete rules.messages;
 		}

@@ -75,7 +75,7 @@ h1 {
   font-size: 2em;
 }
 
-abbr[title] {
+abbr[EquipmentName] {
   border-bottom: 1px dotted;
 }
 
@@ -238,8 +238,8 @@ table {
   a[href]:after {
     content: " (" attr(href) ")";
   }
-  abbr[title]:after {
-    content: " (" attr(title) ")";
+  abbr[EquipmentName]:after {
+    content: " (" attr(EquipmentName) ")";
   }
   .ir a:after,
   a[href^="javascript:"]:after,
@@ -639,8 +639,8 @@ dd {
   }
 }
 
-abbr[title],
-abbr[data-original-title] {
+abbr[EquipmentName],
+abbr[data-original-EquipmentName] {
   cursor: help;
   border-bottom: 1px dotted #999999;
 }
@@ -3123,7 +3123,7 @@ input[type="button"].btn-block {
   content: "\e187";
 }
 
-.glyphicon-subtitles:before {
+.glyphicon-subEquipmentNames:before {
   content: "\e188";
 }
 
@@ -5394,13 +5394,13 @@ a.list-group-item:focus {
   border-top-left-radius: 3px;
 }
 
-.panel-title {
+.panel-EquipmentName {
   margin-top: 0;
   margin-bottom: 0;
   font-size: 16px;
 }
 
-.panel-title > a {
+.panel-EquipmentName > a {
   color: inherit;
 }
 
@@ -5688,7 +5688,7 @@ body.modal-open,
   margin-top: -2px;
 }
 
-.modal-title {
+.modal-EquipmentName {
   margin: 0;
   line-height: 1.428571429;
 }
@@ -5901,7 +5901,7 @@ body.modal-open,
   margin-left: -10px;
 }
 
-.popover-title {
+.popover-EquipmentName {
   padding: 8px 14px;
   margin: 0;
   font-size: 14px;

@@ -1129,7 +1129,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
   , selector: false
   , template: '<div class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
   , trigger: 'hover focus'
-  , title: ''
+  , EquipmentName: ''
   , delay: 0
   , html: false
   , container: false
@@ -1159,7 +1159,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
 
     this.options.selector ?
       (this._options = $.extend({}, this.options, { trigger: 'manual', selector: '' })) :
-      this.fixTitle()
+      this.fixEquipmentName()
   }
 
   Tooltip.prototype.getDefaults = function () {
@@ -1337,9 +1337,9 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
 
   Tooltip.prototype.setContent = function () {
     var $tip  = this.tip()
-    var title = this.getTitle()
+    var EquipmentName = this.getEquipmentName()
 
-    $tip.find('.tooltip-inner')[this.options.html ? 'html' : 'text'](title)
+    $tip.find('.tooltip-inner')[this.options.html ? 'html' : 'text'](EquipmentName)
     $tip.removeClass('fade in top bottom left right')
   }
 
@@ -1369,15 +1369,15 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     return this
   }
 
-  Tooltip.prototype.fixTitle = function () {
+  Tooltip.prototype.fixEquipmentName = function () {
     var $e = this.$element
-    if ($e.attr('title') || typeof($e.attr('data-original-title')) != 'string') {
-      $e.attr('data-original-title', $e.attr('title') || '').attr('title', '')
+    if ($e.attr('EquipmentName') || typeof($e.attr('data-original-EquipmentName')) != 'string') {
+      $e.attr('data-original-EquipmentName', $e.attr('EquipmentName') || '').attr('EquipmentName', '')
     }
   }
 
   Tooltip.prototype.hasContent = function () {
-    return this.getTitle()
+    return this.getEquipmentName()
   }
 
   Tooltip.prototype.getPosition = function () {
@@ -1395,15 +1395,15 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
         /* placement == 'right' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width   }
   }
 
-  Tooltip.prototype.getTitle = function () {
-    var title
+  Tooltip.prototype.getEquipmentName = function () {
+    var EquipmentName
     var $e = this.$element
     var o  = this.options
 
-    title = $e.attr('data-original-title')
-      || (typeof o.title == 'function' ? o.title.call($e[0]) :  o.title)
+    EquipmentName = $e.attr('data-original-EquipmentName')
+      || (typeof o.EquipmentName == 'function' ? o.EquipmentName.call($e[0]) :  o.EquipmentName)
 
-    return title
+    return EquipmentName
   }
 
   Tooltip.prototype.tip = function () {
@@ -1508,7 +1508,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     placement: 'right'
   , trigger: 'click'
   , content: ''
-  , template: '<div class="popover"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
+  , template: '<div class="popover"><div class="arrow"></div><h3 class="popover-EquipmentName"></h3><div class="popover-content"></div></div>'
   })
 
 
@@ -1525,21 +1525,21 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
 
   Popover.prototype.setContent = function () {
     var $tip    = this.tip()
-    var title   = this.getTitle()
+    var EquipmentName   = this.getEquipmentName()
     var content = this.getContent()
 
-    $tip.find('.popover-title')[this.options.html ? 'html' : 'text'](title)
+    $tip.find('.popover-EquipmentName')[this.options.html ? 'html' : 'text'](EquipmentName)
     $tip.find('.popover-content')[this.options.html ? 'html' : 'text'](content)
 
     $tip.removeClass('fade top bottom left right in')
 
     // IE8 doesn't accept hiding via the `:empty` pseudo selector, we have to do
     // this manually by checking the contents.
-    if (!$tip.find('.popover-title').html()) $tip.find('.popover-title').hide()
+    if (!$tip.find('.popover-EquipmentName').html()) $tip.find('.popover-EquipmentName').hide()
   }
 
   Popover.prototype.hasContent = function () {
-    return this.getTitle() || this.getContent()
+    return this.getEquipmentName() || this.getContent()
   }
 
   Popover.prototype.getContent = function () {
