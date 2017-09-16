@@ -25,18 +25,35 @@
         <dd>
             @Html.DisplayFor(model => model.FirstMidName)
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.EnrollmentDate)
+            @Html.DisplayNameFor(model => model.Equipment)
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.EnrollmentDate)
+            <table class="table">
+                <tr>
+                    <th>Equipment Name</th>
+                    <th>Assigned Date</th>
+                </tr>
+                @foreach (var item in Model.Equipment)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EquipmentName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateAssigned)
+                        </td>
+                    </tr>
+                }
+            </table>
         </dd>
+
+
+
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.StudentID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

@@ -11,107 +11,112 @@ using EquipmentDatabase.Models;
 
 namespace EquipmentDatabase.Controllers
 {
-    public class StudentController : Controller
+    public class EquipmentController : Controller
     {
         private ProjectContext db = new ProjectContext();
 
-        // GET: Student
+        // GET: Equipment
         public ActionResult Index()
         {
-            return View(db.Students.ToList());
+            var equipments = db.Equipments.Include(e => e.Student);
+            return View(equipments.ToList());
         }
 
-        // GET: Student/Details/5
+        // GET: Equipment/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
-            if (student == null)
+            Equipment equipment = db.Equipments.Find(id);
+            if (equipment == null)
             {
                 return HttpNotFound();
             }
-            return View(student);
+            return View(equipment);
         }
 
-        // GET: Student/Create
+        // GET: Equipment/Create
         public ActionResult Create()
         {
+            ViewBag.StudentID = new SelectList(db.Students, "StudentID", "LastName");
             return View();
         }
 
-        // POST: Student/Create
+        // POST: Equipment/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "LastName,FirstMidName")] Student student)
+        public ActionResult Create([Bind(Include = "EquipmentID,DateAssigned,EquipmentName,StudentID")] Equipment equipment)
         {
             if (ModelState.IsValid)
             {
-                db.Students.Add(student);
+                db.Equipments.Add(equipment);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(student);
+            ViewBag.StudentID = new SelectList(db.Students, "StudentID", "LastName", equipment.StudentID);
+            return View(equipment);
         }
 
-        // GET: Student/Edit/5
+        // GET: Equipment/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
-            if (student == null)
+            Equipment equipment = db.Equipments.Find(id);
+            if (equipment == null)
             {
                 return HttpNotFound();
             }
-            return View(student);
+            ViewBag.StudentID = new SelectList(db.Students, "StudentID", "LastName", equipment.StudentID);
+            return View(equipment);
         }
 
-        // POST: Student/Edit/5
+        // POST: Equipment/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "LastName,FirstMidName")] Student student)
+        public ActionResult Edit([Bind(Include = "EquipmentID,DateAssigned,EquipmentName,StudentID")] Equipment equipment)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(student).State = EntityState.Modified;
+                db.Entry(equipment).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(student);
+            ViewBag.StudentID = new SelectList(db.Students, "StudentID", "LastName", equipment.StudentID);
+            return View(equipment);
         }
 
-        // GET: Student/Delete/5
+        // GET: Equipment/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
-            if (student == null)
+            Equipment equipment = db.Equipments.Find(id);
+            if (equipment == null)
             {
                 return HttpNotFound();
             }
-            return View(student);
+            return View(equipment);
         }
 
-        // POST: Student/Delete/5
+        // POST: Equipment/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Student student = db.Students.Find(id);
-            db.Students.Remove(student);
+            Equipment equipment = db.Equipments.Find(id);
+            db.Equipments.Remove(equipment);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
