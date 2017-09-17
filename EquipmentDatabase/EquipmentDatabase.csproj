@@ -150,7 +150,6 @@
     <Compile Include="Controllers\EquipmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
-    <Compile Include="DAL\ProjectConfiguration.cs" />
     <Compile Include="DAL\ProjectContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
