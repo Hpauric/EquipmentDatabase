@@ -9,6 +9,8 @@ using System.Web.Mvc;
 using EquipmentDatabase.DAL;
 using EquipmentDatabase.Models;
 
+//test
+
 namespace EquipmentDatabase.Controllers
 {
     public class StudentController : Controller
