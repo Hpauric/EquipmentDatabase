@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using EquipmentDatabase.DAL;
 using EquipmentDatabase.Models;
+using System.Data.Entity.Infrastructure;
 
 //test
 
@@ -51,11 +52,19 @@ namespace EquipmentDatabase.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "LastName,FirstMidName")] Student student)
         {
-            if (ModelState.IsValid)
+            try
+            {
+                if (ModelState.IsValid)
             {
                 db.Students.Add(student);
                 db.SaveChanges();
                 return RedirectToAction("Index");
+            }
+            }
+            catch (RetryLimitExceededException /* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
 
             return View(student);

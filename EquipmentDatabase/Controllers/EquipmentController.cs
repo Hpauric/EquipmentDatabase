@@ -18,8 +18,18 @@ namespace EquipmentDatabase.Controllers
         // GET: Equipment
         public ActionResult Index()
         {
-            var equipments = db.Equipments.Include(e => e.Student);
-            return View(equipments.ToList());
+            try
+            {
+                var equipments = db.Equipments.Include(e => e.Student);
+                return View(equipments);
+
+            }
+            catch (DataException /* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                return View("Error");
+            }
         }
 
         // GET: Equipment/Details/5
@@ -51,11 +61,20 @@ namespace EquipmentDatabase.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "EquipmentID,DateAssigned,EquipmentName,StudentID")] Equipment equipment)
         {
-            if (ModelState.IsValid)
+
+            try
+            {
+                if (ModelState.IsValid)
             {
                 db.Equipments.Add(equipment);
                 db.SaveChanges();
                 return RedirectToAction("Index");
+            }
+            }
+            catch (DataException /* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
 
             ViewBag.StudentID = new SelectList(db.Students, "StudentID", "LastName", equipment.StudentID);
@@ -85,11 +104,21 @@ namespace EquipmentDatabase.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "EquipmentID,DateAssigned,EquipmentName,StudentID")] Equipment equipment)
         {
+
+
             if (ModelState.IsValid)
             {
-                db.Entry(equipment).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    db.Entry(equipment).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+                    //Log the error (uncomment dex variable name and add a line here to write a log.
+                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+                }
             }
             ViewBag.StudentID = new SelectList(db.Students, "StudentID", "LastName", equipment.StudentID);
             return View(equipment);
