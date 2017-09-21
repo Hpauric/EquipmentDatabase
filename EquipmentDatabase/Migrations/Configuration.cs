@@ -9,8 +9,7 @@ namespace EquipmentDatabase.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            ContextKey = "EquipmentDatabase.DAL.ProjectContext";
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(EquipmentDatabase.DAL.ProjectContext context)

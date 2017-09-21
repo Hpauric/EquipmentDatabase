@@ -3,7 +3,7 @@ namespace EquipmentDatabase.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class InitialMigration : DbMigration
     {
         public override void Up()
         {
@@ -13,6 +13,7 @@ namespace EquipmentDatabase.Migrations
                     {
                         EquipmentID = c.Int(nullable: false, identity: true),
                         DateAssigned = c.DateTime(nullable: false),
+                        EquipmentName = c.String(),
                         StudentID = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.EquipmentID)

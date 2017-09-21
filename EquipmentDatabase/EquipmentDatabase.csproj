@@ -155,17 +155,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201709161501114_InitialCreate.cs" />
-    <Compile Include="Migrations\201709161501114_InitialCreate.Designer.cs">
-      <DependentUpon>201709161501114_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709161709025_AddEquipmentName.cs" />
-    <Compile Include="Migrations\201709161709025_AddEquipmentName.Designer.cs">
-      <DependentUpon>201709161709025_AddEquipmentName.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709211626172_equipment-name-added.cs" />
-    <Compile Include="Migrations\201709211626172_equipment-name-added.Designer.cs">
-      <DependentUpon>201709211626172_equipment-name-added.cs</DependentUpon>
+    <Compile Include="Migrations\201709211643263_InitialMigration.cs" />
+    <Compile Include="Migrations\201709211643263_InitialMigration.Designer.cs">
+      <DependentUpon>201709211643263_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Equipment.cs" />
@@ -240,14 +232,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201709161501114_InitialCreate.resx">
-      <DependentUpon>201709161501114_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709161709025_AddEquipmentName.resx">
-      <DependentUpon>201709161709025_AddEquipmentName.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709211626172_equipment-name-added.resx">
-      <DependentUpon>201709211626172_equipment-name-added.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201709211643263_InitialMigration.resx">
+      <DependentUpon>201709211643263_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
