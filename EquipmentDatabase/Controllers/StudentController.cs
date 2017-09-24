@@ -50,7 +50,7 @@ namespace EquipmentDatabase.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "LastName,FirstMidName")] Student student)
+        public ActionResult Create([Bind(Include = "StudentID,LastName,FirstMidName")] Student student)
         {
             try
             {

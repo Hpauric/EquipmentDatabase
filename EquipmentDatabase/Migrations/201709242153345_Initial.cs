@@ -3,7 +3,7 @@ namespace EquipmentDatabase.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialMigration : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
@@ -24,7 +24,7 @@ namespace EquipmentDatabase.Migrations
                 "dbo.Student",
                 c => new
                     {
-                        StudentID = c.Int(nullable: false, identity: true),
+                        StudentID = c.Int(nullable: false),
                         LastName = c.String(),
                         FirstMidName = c.String(),
                     })
