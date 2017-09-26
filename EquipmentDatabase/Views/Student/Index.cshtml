@@ -4,6 +4,8 @@
     ViewBag.Title = "Index";
 }
 
+@{var test = 10; }
+
 <h2>Index</h2>
 
 <p>
@@ -12,22 +14,43 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.StudentID)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.LastName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.FirstMidName)
         </th>
+        <th>
+            Equipment
+        </th>
+
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstMidName)
-        </td>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstMidName)
+            </td>
+            @foreach (var equipmentItem in item.Equipment)
+                {  
+                <td>
+                    @Html.DisplayFor(modelItem => equipmentItem.EquipmentName)
+                    @{test = test -1;}
+                    @test
+                </td>
+            }
+
+
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.StudentID }) |
             @Html.ActionLink("Details", "Details", new { id=item.StudentID }) |

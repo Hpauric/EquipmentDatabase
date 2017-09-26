@@ -8,7 +8,7 @@ namespace EquipmentDatabase.Models
     public class Student
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [Display(Name = "Number")]
+        [Display(Name = "Student Number")]
         public int StudentID { get; set; }
         public string LastName { get; set; }
         public string FirstMidName { get; set; }
