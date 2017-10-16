@@ -9,6 +9,9 @@ namespace EquipmentDatabase.Migrations
     using System.Reflection;
     using System.Text;
 
+
+
+
     internal sealed class Configuration : DbMigrationsConfiguration<EquipmentDatabase.DAL.ProjectContext>
     {
         public Configuration()

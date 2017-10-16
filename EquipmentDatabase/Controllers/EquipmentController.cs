@@ -53,7 +53,7 @@ namespace EquipmentDatabase.Controllers
         // GET: Equipment/Create
         public ActionResult Create()
         {
-            ViewBag.StudentID = new SelectList(db.Students, "StudentID", "LastName");
+            ViewBag.StudentID = new SelectList(db.Students, "StudentID", "StudentID");
             return View();
         }
 
@@ -72,7 +72,44 @@ namespace EquipmentDatabase.Controllers
                 db.Equipments.Add(equipment);
                 db.SaveChanges();
                 return RedirectToAction("Index");
+                }
+                else {
+                        ViewBag.StudentID = new SelectList(db.Students, "StudentID", "LastName", equipment.StudentID);
+                        return View(equipment);
+                    }
+            
             }
+            catch (DataException /* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                return View(equipment);
+            }
+
+            
+        }
+
+        // GET: Equipment/BulkCreate
+        public ActionResult BulkCreate()
+        {
+            return View();
+        }
+
+        // POST: Equipment/BulkCreate
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult BulkCreate([Bind(Include = "EquipmentID,DateAssigned,EquipmentName,StudentID")] Equipment equipment)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+
+                 
+                    db.Equipments.Add(equipment);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
             catch (DataException /* dex */)
             {
@@ -80,9 +117,12 @@ namespace EquipmentDatabase.Controllers
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
 
-            ViewBag.StudentID = new SelectList(db.Students, "StudentID", "LastName", equipment.StudentID);
-            return View(equipment);
+            return View();
         }
+
+
+
+
 
         // GET: Equipment/Edit/5
         public ActionResult Edit(int? id)

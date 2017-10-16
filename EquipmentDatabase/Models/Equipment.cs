@@ -12,8 +12,8 @@ namespace EquipmentDatabase.Models
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DateAssigned { get; set; }
         public string EquipmentName { get; set; }
-        public int StudentID { get; set; }
-
+        public int? StudentID { get; set; }
+    
         public virtual Student Student { get; set; }
     }
 }
