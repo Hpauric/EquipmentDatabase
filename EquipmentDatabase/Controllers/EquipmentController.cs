@@ -24,14 +24,14 @@ namespace EquipmentDatabase.Controllers
                 return View(equipments);
 
             }
-            catch (DataException  dex )
+            catch (DataException dex)
             {
                 //Log the error (uncomment dex variable name and add a line here to write a log.
                 System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
                 System.Diagnostics.Trace.TraceError(dex.Message);
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
                 return View("Error");
-               // return dex.Message;
+                // return dex.Message;
             }
         }
 
@@ -68,16 +68,17 @@ namespace EquipmentDatabase.Controllers
             try
             {
                 if (ModelState.IsValid)
-            {
-                db.Equipments.Add(equipment);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                {
+                    db.Equipments.Add(equipment);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
                 }
-                else {
-                        ViewBag.StudentID = new SelectList(db.Students, "StudentID", "LastName", equipment.StudentID);
-                        return View(equipment);
-                    }
-            
+                else
+                {
+                    ViewBag.StudentID = new SelectList(db.Students, "StudentID", "LastName", equipment.StudentID);
+                    return View(equipment);
+                }
+
             }
             catch (DataException /* dex */)
             {
@@ -85,7 +86,6 @@ namespace EquipmentDatabase.Controllers
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
                 return View(equipment);
             }
-
             
         }
 
@@ -101,21 +101,21 @@ namespace EquipmentDatabase.Controllers
         public ActionResult BulkCreate(Equipment equipment, int NumberOfUnits)
         {
 
-
             System.Diagnostics.Debug.WriteLine("Number of Units: " + NumberOfUnits);
-
             System.Diagnostics.Debug.WriteLine(equipment);
+
+            //var nextEquipmentID = db.Equipment.SqlQuery("SELECT MAX(ID) FROM ;
+            
             try
             {
                 if (ModelState.IsValid)
                 {
-                    for(var i = 0; i < NumberOfUnits; i++)
+                   for (var i = 0; i < NumberOfUnits; i++)
                     {
-                        equipment.EquipmentID = 12 + i;
                         db.Equipments.Add(equipment);
                         db.SaveChanges();
                     }
-                    
+                   
                     return RedirectToAction("Index");
                 }
             }
