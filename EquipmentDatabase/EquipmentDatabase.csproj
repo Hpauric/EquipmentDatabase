@@ -196,7 +196,6 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Connected Services\Application Insights\ConnectedService.json" />
     <EmbeddedResource Include="Migrations\SeedData\STUDENT_MOCK_DATA.csv" />
     <None Include="Properties\PublishProfiles\equipmenttest - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\myWebAppWithSql2 - Web Deploy.pubxml" />

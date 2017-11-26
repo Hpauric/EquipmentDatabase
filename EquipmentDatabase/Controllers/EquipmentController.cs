@@ -98,16 +98,24 @@ namespace EquipmentDatabase.Controllers
         // POST: Equipment/BulkCreate
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult BulkCreate([Bind(Include = "EquipmentID,DateAssigned,EquipmentName,StudentID")] Equipment equipment)
+        public ActionResult BulkCreate(Equipment equipment, int NumberOfUnits)
         {
+
+
+            System.Diagnostics.Debug.WriteLine("Number of Units: " + NumberOfUnits);
+
+            System.Diagnostics.Debug.WriteLine(equipment);
             try
             {
                 if (ModelState.IsValid)
                 {
-
-                 
-                    db.Equipments.Add(equipment);
-                    db.SaveChanges();
+                    for(var i = 0; i < NumberOfUnits; i++)
+                    {
+                        equipment.EquipmentID = 12 + i;
+                        db.Equipments.Add(equipment);
+                        db.SaveChanges();
+                    }
+                    
                     return RedirectToAction("Index");
                 }
             }

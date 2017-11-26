@@ -7,10 +7,10 @@
 <h2>BulkCreate</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Equipment</h4>
         <hr />
@@ -32,10 +32,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.StudentID, "StudentID", htmlAttributes: new { @class = "control-label col-md-2" })
+           @Html.Label("Number of Units", null,  new { @class = "control-label col-md-2" } )
             <div class="col-md-10">
-                @Html.DropDownList("StudentID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.StudentID, "", new { @class = "text-danger" })
+                @Html.Editor("NumberOfUnits", null, new { htmlAttributes = new { @class = "control-label col-md-2", @type = "number" } })
+                @Html.ValidationMessage("Number Of Units", "", new { htmlAttributes = new { @class = "text-danger" } })
             </div>
         </div>
 
