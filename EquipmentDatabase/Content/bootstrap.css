@@ -75,7 +75,7 @@ h1 {
   font-size: 2em;
 }
 
-abbr[EquipmentName] {
+abbr[EquipmentType] {
   border-bottom: 1px dotted;
 }
 
@@ -238,8 +238,8 @@ table {
   a[href]:after {
     content: " (" attr(href) ")";
   }
-  abbr[EquipmentName]:after {
-    content: " (" attr(EquipmentName) ")";
+  abbr[EquipmentType]:after {
+    content: " (" attr(EquipmentType) ")";
   }
   .ir a:after,
   a[href^="javascript:"]:after,
@@ -639,8 +639,8 @@ dd {
   }
 }
 
-abbr[EquipmentName],
-abbr[data-original-EquipmentName] {
+abbr[EquipmentType],
+abbr[data-original-EquipmentType] {
   cursor: help;
   border-bottom: 1px dotted #999999;
 }
@@ -3123,7 +3123,7 @@ input[type="button"].btn-block {
   content: "\e187";
 }
 
-.glyphicon-subEquipmentNames:before {
+.glyphicon-subEquipmentTypes:before {
   content: "\e188";
 }
 
@@ -5394,13 +5394,13 @@ a.list-group-item:focus {
   border-top-left-radius: 3px;
 }
 
-.panel-EquipmentName {
+.panel-EquipmentType {
   margin-top: 0;
   margin-bottom: 0;
   font-size: 16px;
 }
 
-.panel-EquipmentName > a {
+.panel-EquipmentType > a {
   color: inherit;
 }
 
@@ -5688,7 +5688,7 @@ body.modal-open,
   margin-top: -2px;
 }
 
-.modal-EquipmentName {
+.modal-EquipmentType {
   margin: 0;
   line-height: 1.428571429;
 }
@@ -5901,7 +5901,7 @@ body.modal-open,
   margin-left: -10px;
 }
 
-.popover-EquipmentName {
+.popover-EquipmentType {
   padding: 8px 14px;
   margin: 0;
   font-size: 14px;

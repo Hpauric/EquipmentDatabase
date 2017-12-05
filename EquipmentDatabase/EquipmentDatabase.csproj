@@ -179,6 +179,10 @@
     <Compile Include="Migrations\201710051719012_SeedDataTest.Designer.cs">
       <DependentUpon>201710051719012_SeedDataTest.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712051349481_equipment-type-added.cs" />
+    <Compile Include="Migrations\201712051349481_equipment-type-added.Designer.cs">
+      <DependentUpon>201712051349481_equipment-type-added.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Equipment.cs" />
     <Compile Include="Models\Student.cs" />
@@ -196,6 +200,9 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="Migrations\201712051349481_equipment-type-added.resx">
+      <DependentUpon>201712051349481_equipment-type-added.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\SeedData\STUDENT_MOCK_DATA.csv" />
     <None Include="Properties\PublishProfiles\equipmenttest - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\myWebAppWithSql2 - Web Deploy.pubxml" />

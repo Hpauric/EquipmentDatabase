@@ -62,7 +62,7 @@ namespace EquipmentDatabase.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EquipmentID,DateAssigned,EquipmentName,StudentID")] Equipment equipment)
+        public ActionResult Create([Bind(Include = "EquipmentID,DateAssigned,EquipmentType,StudentID")] Equipment equipment)
         {
 
             try
@@ -153,7 +153,7 @@ namespace EquipmentDatabase.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EquipmentID,DateAssigned,EquipmentName,StudentID")] Equipment equipment)
+        public ActionResult Edit([Bind(Include = "EquipmentID,DateAssigned,EquipmentType,StudentID")] Equipment equipment)
         {
 
 

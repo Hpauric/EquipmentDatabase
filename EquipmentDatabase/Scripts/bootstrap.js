@@ -1129,7 +1129,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
   , selector: false
   , template: '<div class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
   , trigger: 'hover focus'
-  , EquipmentName: ''
+  , EquipmentType: ''
   , delay: 0
   , html: false
   , container: false
@@ -1159,7 +1159,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
 
     this.options.selector ?
       (this._options = $.extend({}, this.options, { trigger: 'manual', selector: '' })) :
-      this.fixEquipmentName()
+      this.fixEquipmentType()
   }
 
   Tooltip.prototype.getDefaults = function () {
@@ -1337,9 +1337,9 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
 
   Tooltip.prototype.setContent = function () {
     var $tip  = this.tip()
-    var EquipmentName = this.getEquipmentName()
+    var EquipmentType = this.getEquipmentType()
 
-    $tip.find('.tooltip-inner')[this.options.html ? 'html' : 'text'](EquipmentName)
+    $tip.find('.tooltip-inner')[this.options.html ? 'html' : 'text'](EquipmentType)
     $tip.removeClass('fade in top bottom left right')
   }
 
@@ -1369,15 +1369,15 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     return this
   }
 
-  Tooltip.prototype.fixEquipmentName = function () {
+  Tooltip.prototype.fixEquipmentType = function () {
     var $e = this.$element
-    if ($e.attr('EquipmentName') || typeof($e.attr('data-original-EquipmentName')) != 'string') {
-      $e.attr('data-original-EquipmentName', $e.attr('EquipmentName') || '').attr('EquipmentName', '')
+    if ($e.attr('EquipmentType') || typeof($e.attr('data-original-EquipmentType')) != 'string') {
+      $e.attr('data-original-EquipmentType', $e.attr('EquipmentType') || '').attr('EquipmentType', '')
     }
   }
 
   Tooltip.prototype.hasContent = function () {
-    return this.getEquipmentName()
+    return this.getEquipmentType()
   }
 
   Tooltip.prototype.getPosition = function () {
@@ -1395,15 +1395,15 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
         /* placement == 'right' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width   }
   }
 
-  Tooltip.prototype.getEquipmentName = function () {
-    var EquipmentName
+  Tooltip.prototype.getEquipmentType = function () {
+    var EquipmentType
     var $e = this.$element
     var o  = this.options
 
-    EquipmentName = $e.attr('data-original-EquipmentName')
-      || (typeof o.EquipmentName == 'function' ? o.EquipmentName.call($e[0]) :  o.EquipmentName)
+    EquipmentType = $e.attr('data-original-EquipmentType')
+      || (typeof o.EquipmentType == 'function' ? o.EquipmentType.call($e[0]) :  o.EquipmentType)
 
-    return EquipmentName
+    return EquipmentType
   }
 
   Tooltip.prototype.tip = function () {
@@ -1508,7 +1508,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     placement: 'right'
   , trigger: 'click'
   , content: ''
-  , template: '<div class="popover"><div class="arrow"></div><h3 class="popover-EquipmentName"></h3><div class="popover-content"></div></div>'
+  , template: '<div class="popover"><div class="arrow"></div><h3 class="popover-EquipmentType"></h3><div class="popover-content"></div></div>'
   })
 
 
@@ -1525,21 +1525,21 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
 
   Popover.prototype.setContent = function () {
     var $tip    = this.tip()
-    var EquipmentName   = this.getEquipmentName()
+    var EquipmentType   = this.getEquipmentType()
     var content = this.getContent()
 
-    $tip.find('.popover-EquipmentName')[this.options.html ? 'html' : 'text'](EquipmentName)
+    $tip.find('.popover-EquipmentType')[this.options.html ? 'html' : 'text'](EquipmentType)
     $tip.find('.popover-content')[this.options.html ? 'html' : 'text'](content)
 
     $tip.removeClass('fade top bottom left right in')
 
     // IE8 doesn't accept hiding via the `:empty` pseudo selector, we have to do
     // this manually by checking the contents.
-    if (!$tip.find('.popover-EquipmentName').html()) $tip.find('.popover-EquipmentName').hide()
+    if (!$tip.find('.popover-EquipmentType').html()) $tip.find('.popover-EquipmentType').hide()
   }
 
   Popover.prototype.hasContent = function () {
-    return this.getEquipmentName() || this.getContent()
+    return this.getEquipmentType() || this.getContent()
   }
 
   Popover.prototype.getContent = function () {

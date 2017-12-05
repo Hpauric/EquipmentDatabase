@@ -13,7 +13,7 @@ namespace EquipmentDatabase.Migrations
                     {
                         EquipmentID = c.Int(nullable: false, identity: true),
                         DateAssigned = c.DateTime(nullable: false),
-                        EquipmentName = c.String(),
+                        EquipmentType = c.String(),
                         StudentID = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.EquipmentID)

@@ -21,7 +21,7 @@
             @Html.DisplayNameFor(model => model.DateAssigned)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.EquipmentName)
+            @Html.DisplayNameFor(model => model.EquipmentType)
         </th>
         <th></th>
     </tr>
@@ -39,7 +39,7 @@
             @Html.DisplayFor(modelItem => item.DateAssigned)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.EquipmentName)
+            @Html.DisplayFor(modelItem => item.EquipmentType)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.EquipmentID }) |
