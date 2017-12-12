@@ -7,7 +7,9 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Add Equipment", "Create") @Html.ActionLink("Bulk Add", "BulkCreate")
+            @Html.ActionLink("Add Equipment", "Create", "", htmlAttributes: new { @class = "btn btn-primary" }) 
+            @Html.ActionLink("Add Shipment", "BulkCreate","", htmlAttributes: new { @class = "btn btn-primary" })
+
 </p>
 <table class="table">
     <tr>
@@ -15,14 +17,32 @@
             ID
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Student.LastName)
+            
+            	@* @Html.DisplayNameFor(model => model.EquipmentType) *@
+
+            Equipment Type
+            
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DateAssigned)
+            Student ID
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.EquipmentType)
+            First Name
         </th>
+        <th>
+            Last Name
+        </th>
+        <th>
+            @* @Html.DisplayNameFor(model => model.DateAssigned) *@
+            Date Purchased
+
+        </th>
+        <th>
+            @* @Html.DisplayNameFor(model => model.DateAssigned) *@
+            Date Assigned
+            
+        </th>
+        
         <th></th>
     </tr>
 
@@ -33,18 +53,31 @@
         </td>
 
         <td>
+            @Html.DisplayFor(modelItem => item.EquipmentType)
+            
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Student.StudentID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Student.FirstMidName)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Student.LastName)
         </td>
+            
         <td>
+            @Html.DisplayFor(modelItem => item.DatePurchased)
+        </td>
+
+            <td>
             @Html.DisplayFor(modelItem => item.DateAssigned)
         </td>
+        
         <td>
-            @Html.DisplayFor(modelItem => item.EquipmentType)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.EquipmentID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.EquipmentID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.EquipmentID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.EquipmentID }, htmlAttributes: new { @class = "btn btn-primary" })
+            @Html.ActionLink("Details", "Details", new { id=item.EquipmentID }, htmlAttributes: new { @class = "btn btn-primary" })
+            @Html.ActionLink("Delete", "Delete", new { id=item.EquipmentID }, htmlAttributes: new { @class = "btn btn-primary" })
         </td>
     </tr>
 }

@@ -183,6 +183,18 @@
     <Compile Include="Migrations\201712051349481_equipment-type-added.Designer.cs">
       <DependentUpon>201712051349481_equipment-type-added.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712121407359_date-purchased-added-to-equipment.cs" />
+    <Compile Include="Migrations\201712121407359_date-purchased-added-to-equipment.Designer.cs">
+      <DependentUpon>201712121407359_date-purchased-added-to-equipment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712121451507_type-correction-date-purchased.cs" />
+    <Compile Include="Migrations\201712121451507_type-correction-date-purchased.Designer.cs">
+      <DependentUpon>201712121451507_type-correction-date-purchased.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712121543244_nullable-dates.cs" />
+    <Compile Include="Migrations\201712121543244_nullable-dates.Designer.cs">
+      <DependentUpon>201712121543244_nullable-dates.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Equipment.cs" />
     <Compile Include="Models\Student.cs" />
@@ -202,6 +214,15 @@
     </Content>
     <EmbeddedResource Include="Migrations\201712051349481_equipment-type-added.resx">
       <DependentUpon>201712051349481_equipment-type-added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712121407359_date-purchased-added-to-equipment.resx">
+      <DependentUpon>201712121407359_date-purchased-added-to-equipment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712121451507_type-correction-date-purchased.resx">
+      <DependentUpon>201712121451507_type-correction-date-purchased.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712121543244_nullable-dates.resx">
+      <DependentUpon>201712121543244_nullable-dates.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\SeedData\STUDENT_MOCK_DATA.csv" />
     <None Include="Properties\PublishProfiles\equipmenttest - Web Deploy.pubxml" />

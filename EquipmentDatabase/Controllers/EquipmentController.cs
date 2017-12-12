@@ -80,10 +80,13 @@ namespace EquipmentDatabase.Controllers
                 }
 
             }
-            catch (DataException /* dex */)
+            catch (DataException dex)
             {
-                //Log the error (uncomment dex variable name and add a line here to write a log.
-                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+              
+                System.Diagnostics.Debug.WriteLine(dex.ToString());
+                //ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                ModelState.AddModelError("", dex.ToString() + dex.Message + dex.Source + dex.TargetSite + dex.HelpLink + dex.InnerException);
+
                 return View(equipment);
             }
             

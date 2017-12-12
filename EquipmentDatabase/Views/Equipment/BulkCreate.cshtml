@@ -4,7 +4,7 @@
     ViewBag.Title = "BulkCreate";
 }
 
-<h2>BulkCreate</h2>
+<h2>Bulk Create</h2>
 
 
 @using (Html.BeginForm())
@@ -16,10 +16,10 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.DateAssigned, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DatePurchased, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DateAssigned, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DateAssigned, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.DatePurchased, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DatePurchased, "", new { @class = "text-danger" })
             </div>
         </div>
 

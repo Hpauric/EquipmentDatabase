@@ -6,19 +6,24 @@
 
 <h2>Edit</h2>
 
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Equipment</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.EquipmentID)
+        <div class="form-group">
+            @Html.LabelFor(model => model.DatePurchased, "Date Purchased", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DatePurchased, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DatePurchased, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DateAssigned, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DateAssigned, "Date Assigned", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.DateAssigned, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.DateAssigned, "", new { @class = "text-danger" })
@@ -26,7 +31,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.EquipmentType, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.EquipmentType, "Equipment Type", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.EquipmentType, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.EquipmentType, "", new { @class = "text-danger" })
@@ -34,16 +39,28 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.StudentID, "StudentID", htmlAttributes: new { @class = "control-label col-md-2" })
+
+            <label class="control-label col-md-2" for="student-assigned">
+                Student Assigned?
+            </label>
             <div class="col-md-10">
-                @Html.DropDownList("StudentID", null, htmlAttributes: new { @class = "form-control" })
+                <input type="checkbox" id="student-assigned" value="StudentAssigned" />
+
+            </div>
+
+        </div>
+
+        <div class="form-group" hidden id="student-selector">
+            @Html.LabelFor(model => model.StudentID, "Student ID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StudentID, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.StudentID, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
     </div>
@@ -52,6 +69,19 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+<script>
+    document.getElementById('StudentID').selectedIndex = -1;
+
+    $('#student-assigned').change(function () {
+        if ($(this).is(':checked')) {
+            $('#student-selector').show();
+        }
+        else {
+            $('#student-selector').hide();
+            document.getElementById('StudentID').selectedIndex = -1;
+        }
+    });
+</script>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
