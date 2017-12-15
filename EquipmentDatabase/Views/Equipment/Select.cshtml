@@ -6,11 +6,9 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Add Equipment", "Create", "", htmlAttributes: new { @class = "btn btn-primary" })
-    @Html.ActionLink("Add Shipment", "BulkCreate", "", htmlAttributes: new { @class = "btn btn-primary" })
+@ViewBag.StudentID
 
-</p>
+
 <table class="table">
     <tr>
         <th>
@@ -83,9 +81,8 @@
             </td>
 
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.EquipmentID }, htmlAttributes: new { @class = "btn btn-primary" })
-                @Html.ActionLink("Details", "Details", new { id = item.EquipmentID }, htmlAttributes: new { @class = "btn btn-primary" })
-                @Html.ActionLink("Delete", "Delete", new { id = item.EquipmentID }, htmlAttributes: new { @class = "btn btn-primary" })
+                @Html.ActionLink("Select", "Edit", new { id = item.EquipmentID }, htmlAttributes: new { @class = "btn btn-primary" })
+                
             </td>
         </tr>
     }

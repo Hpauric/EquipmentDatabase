@@ -90,11 +90,15 @@ namespace EquipmentDatabase.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "LastName,FirstMidName")] Student student)
+        public ActionResult Edit([Bind(Include = "StudentID,LastName,FirstMidName")] Student student)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(student).State = EntityState.Modified;
+                System.Diagnostics.Debug.WriteLine("****************************************");
+                System.Diagnostics.Debug.WriteLine(student.StudentID.ToString());
+                System.Diagnostics.Debug.WriteLine("****************************************");
+                System.Diagnostics.Debug.WriteLine(EntityState.Modified);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

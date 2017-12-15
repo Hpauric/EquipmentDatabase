@@ -57,23 +57,38 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.FirstMidName)
                 </td>
+                @*Html.DisplayFor(modelItem => item.Equipment.Skip(1).First().EquipmentType)
+
+                    try
+                    {
+                        Html.DisplayFor(modelItem => item.Equipment.First().EquipmentType);
+                    }
+                    catch { }
 
 
-                <td>
-                   Livescribe
-                </td>
-                <td>
-                   Laptop
-                </td>
+                *@
 
+                @{int count = 0;
 
-               @* @foreach (var equipmentItem in item.Equipment)
-    {
-        <td>
-            @Html.DisplayFor(modelItem => equipmentItem.EquipmentType)
-        </td>
-    }
-            *@
+                    foreach (var equipmentItem in item.Equipment)
+                    {
+                        count++;
+
+                        if (count <= 2)
+                        {
+                            <td>
+                                @Html.DisplayFor(modelItem => equipmentItem.EquipmentType)
+                            </td>
+                        }
+                    }
+                    if (count == 0) {
+                    <td></td><td></td>
+                    }
+                    else if(count == 1)
+                    {
+                        <td></td>
+                    }
+                }
 
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.StudentID }) |
@@ -81,7 +96,7 @@
                     @Html.ActionLink("Delete", "Delete", new { id = item.StudentID })
                 </td>
             </tr>
-        }
+                    }
 
-        </tbody>
+    </tbody>
 </table>

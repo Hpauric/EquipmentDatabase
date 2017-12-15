@@ -35,6 +35,28 @@ namespace EquipmentDatabase.Controllers
             }
         }
 
+        // GET: Equipment
+        public ActionResult Select(int? StudentID)
+        {
+            ViewBag.StudentID = StudentID;
+
+            try
+            {
+                var equipments = db.Equipments.Include(e => e.Student);
+                return View(equipments);
+
+            }
+            catch (DataException dex)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
+                System.Diagnostics.Trace.TraceError(dex.Message);
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                return View("Error");
+                // return dex.Message;
+            }
+        }
+
         // GET: Equipment/Details/5
         public ActionResult Details(int? id)
         {
@@ -156,7 +178,7 @@ namespace EquipmentDatabase.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EquipmentID,DateAssigned,EquipmentType,StudentID")] Equipment equipment)
+        public ActionResult Edit([Bind(Include = "EquipmentID,DatePurchased,DateAssigned,EquipmentType,StudentID")] Equipment equipment)
         {
 
 
@@ -168,10 +190,13 @@ namespace EquipmentDatabase.Controllers
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
-                catch
+                catch (DataException dex)
                 {
-                    //Log the error (uncomment dex variable name and add a line here to write a log.
-                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+                    
+                    ModelState.AddModelError("", dex.ToString() + '\n' +
+                        dex.Message + '\n' + dex.Source + '\n' + 
+                        dex.TargetSite + '\n' + dex.HelpLink + '\n' + 
+                        dex.InnerException);
                 }
             }
             ViewBag.StudentID = new SelectList(db.Students, "StudentID", "LastName", equipment.StudentID);
