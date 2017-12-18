@@ -203,6 +203,36 @@ namespace EquipmentDatabase.Controllers
             return View(equipment);
         }
 
+        public ActionResult Save(int ID, int StudentID)
+        {
+
+            Equipment equipment = new Equipment();
+            equipment.EquipmentID = ID;
+            equipment.StudentID = StudentID;
+            
+
+            if (StudentID > 10)
+            {
+                try
+                {
+                    db.Entry(equipment).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (DataException dex)
+                {
+
+                    ModelState.AddModelError("", dex.ToString() + '\n' +
+                        dex.Message + '\n' + dex.Source + '\n' +
+                        dex.TargetSite + '\n' + dex.HelpLink + '\n' +
+                        dex.InnerException);
+                }
+            }
+            
+            return View("Error");
+        }
+
+
         // GET: Equipment/Delete/5
         public ActionResult Delete(int? id)
         {
