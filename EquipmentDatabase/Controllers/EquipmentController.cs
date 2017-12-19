@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using EquipmentDatabase.DAL;
+using EquipmentDatabase.Models;
 using System.Data;
 using System.Data.Entity;
-using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using EquipmentDatabase.DAL;
-using EquipmentDatabase.Models;
+
 
 namespace EquipmentDatabase.Controllers
 {
@@ -21,6 +18,7 @@ namespace EquipmentDatabase.Controllers
             try
             {
                 var equipments = db.Equipments.Include(e => e.Student);
+             
                 return View(equipments);
 
             }
@@ -206,15 +204,15 @@ namespace EquipmentDatabase.Controllers
         public ActionResult Save(int ID, int StudentID)
         {
 
-            Equipment equipment = new Equipment();
-            equipment.EquipmentID = ID;
-            equipment.StudentID = StudentID;
-            
+            Equipment equipment = db.Equipments.Find(ID);
 
+
+            
             if (StudentID > 10)
             {
                 try
                 {
+                    equipment.StudentID = StudentID;
                     db.Entry(equipment).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("Index");

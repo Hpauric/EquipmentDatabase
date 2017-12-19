@@ -81,8 +81,9 @@
             </td>
 
             <td>
-                @Html.ActionLink("Select", "Edit", new { id = item.EquipmentID }, htmlAttributes: new { @class = "btn btn-primary" })
-                @Html.ActionLink("Select 2", "Save", new RouteValueDictionary(new { id = item.EquipmentID, studentID = @ViewBag.StudentID }), htmlAttributes: new { @class = "btn btn-primary" })
+                @Html.ActionLink("Select", "Save", new { id = item.EquipmentID, StudentID = @ViewBag.StudentID }, htmlAttributes: new { @class = "btn btn-primary" })
+                @*@Html.ActionLink("Select", "Edit", new { id = item.EquipmentID }, htmlAttributes: new { @class = "btn btn-primary" })
+                @Html.ActionLink("Select 2", "Save", new RouteValueDictionary(new { id = item.EquipmentID, studentID = @ViewBag.StudentID }), htmlAttributes: new { @class = "btn btn-primary" })*@
                 
             </td>
         </tr>

@@ -40,7 +40,7 @@
         </div>
     </div>
   
-    @Html.ActionLink("Assign Equipment", "Select", "Equipment", @Model.StudentID, htmlAttributes: new { @class = "btn btn-primary" })
+    @Html.ActionLink("Assign Equipment", "Select", "Equipment", new { StudentID = @Model.StudentID }, htmlAttributes: new { @class = "btn btn-primary" })
 }
 
 <div>

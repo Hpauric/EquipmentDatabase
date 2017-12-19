@@ -1,6 +1,7 @@
 namespace EquipmentDatabase.Migrations
 {
     using CsvHelper;
+    using EquipmentDatabase.DAL;
     using System;
     using System.Data.Entity.Migrations;
     using System.Diagnostics;
@@ -8,9 +9,6 @@ namespace EquipmentDatabase.Migrations
     using System.Linq;
     using System.Reflection;
     using System.Text;
-
-
-
 
     internal sealed class Configuration : DbMigrationsConfiguration<EquipmentDatabase.DAL.ProjectContext>
     {
@@ -45,9 +43,9 @@ namespace EquipmentDatabase.Migrations
                     CsvReader csvReader = new CsvReader(reader);
                     csvReader.Configuration.WillThrowOnMissingField = false;
                     var students = csvReader.GetRecords<EquipmentDatabase.Models.Student>().ToArray();
-                    context.Students.AddOrUpdate(c => c.LastName, students);
+                    //context.Students.AddOrUpdate(c => c.LastName, students);
+                    context.Students.AddOrUpdate(students);
 
-                    
                 }
             }
 
@@ -57,13 +55,28 @@ namespace EquipmentDatabase.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
             //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+
+            //public OrderLine AddOrUpdate(WindyContext context, OrderLine orderLine)
+            //{
+            //    var trackedOrderLine = context.OrderLines.Find(orderLine.OrderId, orderLine.ProductId);
+            //    if (trackedOrderLine != null)
+            //    {
+            //        context.Entry(trackedOrderLine).CurrentValues.SetValues(orderLine);
+            //        return trackedOrderLine;
+            //    }
+
+            //    context.OrderLines.Add(orderLine);
+            //    return orderLine;
+        //    //}
+        //    private ProjectContext db = new ProjectContext();
+        //var equipments = db.Equipments.Include(e => e.EquipmentID);
+
+        //    //context.Equipments.AddOrUpdate(
+        //    //  p => p.DatePurchased,
+        //    //    { this.DatePurchased = "2007"}
+
+            //);
+
         }
     }
 }

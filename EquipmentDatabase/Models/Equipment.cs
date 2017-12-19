@@ -8,6 +8,7 @@ namespace EquipmentDatabase.Models
     {
         public int EquipmentID { get; set; }
 
+        [Required]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         //[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
@@ -16,6 +17,7 @@ namespace EquipmentDatabase.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? DateAssigned { get; set;   }
+        [Required]
         public string EquipmentType { get; set; }
         public int? StudentID { get; set; }
         public string ModelName { get; set; }

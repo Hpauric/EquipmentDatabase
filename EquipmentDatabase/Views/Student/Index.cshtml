@@ -11,11 +11,13 @@
 
 <script type='text/javascript'>
     $(document).ready(function () {
-        $('#table-id').DataTable();
+        $('#table-id').DataTable({
+            "initComplete": function (settings, json) {
+                $('#table-id').show();
+            }
+        });
     });
 </script>
-
-
 
 
 <h2>Index</h2>
@@ -23,7 +25,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="display" id="table-id">
+<table class="display" id="table-id" hidden>
     <thead>
         <tr>
             <th>

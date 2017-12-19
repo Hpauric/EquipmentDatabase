@@ -4,11 +4,6 @@
     ViewBag.Title = "Details";
 }
 
-
-
-
-
-
 <h2>Details</h2>
 
 <div>
@@ -37,6 +32,7 @@
             <table class="table">
                 <tr>
                     <th>Equipment Name</th>
+                    <th>Purchased Date</th>
                     <th>Assigned Date</th>
                 </tr>
                 @foreach (var item in Model.Equipment)
@@ -44,6 +40,9 @@
                     <tr>
                         <td>
                             @Html.DisplayFor(modelItem => item.EquipmentType)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DatePurchased)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.DateAssigned)

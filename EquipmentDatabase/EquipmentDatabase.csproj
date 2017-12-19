@@ -199,6 +199,10 @@
     <Compile Include="Migrations\201712141146438_new-date-format.Designer.cs">
       <DependentUpon>201712141146438_new-date-format.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712191627546_required-field-equipment.cs" />
+    <Compile Include="Migrations\201712191627546_required-field-equipment.Designer.cs">
+      <DependentUpon>201712191627546_required-field-equipment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Equipment.cs" />
     <Compile Include="Models\Student.cs" />
@@ -230,6 +234,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712141146438_new-date-format.resx">
       <DependentUpon>201712141146438_new-date-format.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712191627546_required-field-equipment.resx">
+      <DependentUpon>201712191627546_required-field-equipment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\SeedData\STUDENT_MOCK_DATA.csv" />
     <None Include="Properties\PublishProfiles\equipmenttest - Web Deploy.pubxml" />
