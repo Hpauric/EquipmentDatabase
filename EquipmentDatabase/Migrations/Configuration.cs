@@ -23,6 +23,25 @@ namespace EquipmentDatabase.Migrations
 
             //throw new Exception(assembly.ToString());
 
+
+            var equipments = context.Equipments.ToArray();
+            foreach (var item in equipments)
+            {
+                //if(item.DatePurchased == null)
+                //{
+                //    item.DatePurchased = new DateTime(2017,1,1);
+                //}
+                if(item.StudentID != null)
+                {
+                    item.Location = "With Student";
+
+                }
+
+                
+
+            }
+            context.Equipments.AddOrUpdate(equipments);
+
             string[] names = assembly.GetManifestResourceNames();
             string fullString = "";
             names.ToList().ForEach(i => fullString += (i.ToString()) + '\n');

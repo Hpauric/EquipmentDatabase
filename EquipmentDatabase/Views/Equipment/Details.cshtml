@@ -10,8 +10,42 @@
     <h4>Equipment</h4>
     <hr />
     <dl class="dl-horizontal">
+
         <dt>
-            @Html.DisplayNameFor(model => model.Student.LastName)
+            Equipment Type
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EquipmentType)
+        </dd>
+
+        <dt>
+            Location
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+
+        <dt>
+            Student ID
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student.StudentID)
+        </dd>
+
+        <dt>
+            First Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student.FirstMidName)
+        </dd>
+
+
+        <dt>
+            Last Name
         </dt>
 
         <dd>
@@ -19,20 +53,32 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DateAssigned)
+            Date Purchased
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.DateAssigned)
         </dd>
 
+
         <dt>
-            @Html.DisplayNameFor(model => model.EquipmentType)
+            Date Assigned
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.EquipmentType)
+            @Html.DisplayFor(model => model.DateAssigned)
         </dd>
+        <dt>
+            Model
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModelName)
+        </dd>
+        
+
+
+        
 
     </dl>
 </div>

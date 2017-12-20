@@ -4,6 +4,22 @@
     ViewBag.Title = "Index";
 }
 
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+
+
+<script type='text/javascript'>
+    $(document).ready(function () {
+        $('#table-id').DataTable({
+            "initComplete": function (settings, json) {
+                $('#table-id').show();
+            },
+            "pageLength": 50
+        });
+    });
+</script>
+
 <h2>Index</h2>
 
 <p>
@@ -11,83 +27,84 @@
     @Html.ActionLink("Add Shipment", "BulkCreate", "", htmlAttributes: new { @class = "btn btn-primary" })
 
 </p>
-<table class="table">
-    <tr>
-        <th>
-            ID
-        </th>
-        <th>
-
-            @* @Html.DisplayNameFor(model => model.EquipmentType) *@
-
-            Equipment Type
-
-        </th>
-        <th>
-            Student ID
-        </th>
-        <th>
-            First Name
-        </th>
-        <th>
-            Last Name
-        </th>
-        <th>
-            @* @Html.DisplayNameFor(model => model.DateAssigned) *@
-            Date Purchased
-
-        </th>
-        <th>
-            @* @Html.DisplayNameFor(model => model.DateAssigned) *@
-            Date Assigned
-
-        </th>
-
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<table class="display" id="table-id" hidden>
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.EquipmentID)
-            </td>
+            <th>
+                ID
+            </th>
+            <th>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.EquipmentType)
+                @* @Html.DisplayNameFor(model => model.EquipmentType) *@
 
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Student.StudentID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Student.FirstMidName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Student.LastName)
-            </td>
+                Equipment Type
 
-            <td>
-                @if (item.DatePurchased.HasValue)
-                {
-                    @item.DatePurchased.Value.ToString("MM/dd/yyyy")
-                }
-            </td>
+            </th>
+            <th>
+                Student ID
+            </th>
+            <th>
+                First Name
+            </th>
+            <th>
+                Last Name
+            </th>
+            <th>
+                @* @Html.DisplayNameFor(model => model.DateAssigned) *@
+                Date Purchased
 
-            <td>
+            </th>
+            <th>
+                @* @Html.DisplayNameFor(model => model.DateAssigned) *@
+                Date Assigned
 
-                @if (item.DateAssigned.HasValue)
-                {
-                    @item.DateAssigned.Value.ToString("MM/dd/yyyy")
-                }
-            </td>
+            </th>
 
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.EquipmentID }, htmlAttributes: new { @class = "btn btn-primary" })
-                @Html.ActionLink("Details", "Details", new { id = item.EquipmentID }, htmlAttributes: new { @class = "btn btn-primary" })
-                @Html.ActionLink("Delete", "Delete", new { id = item.EquipmentID }, htmlAttributes: new { @class = "btn btn-primary" })
-            </td>
+            <th></th>
         </tr>
-    }
+    </thead>
+    <tbody>
 
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EquipmentID)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.EquipmentType)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student.StudentID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student.FirstMidName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student.LastName)
+                </td>
+
+                <td>
+                    @item.DatePurchased.ToString("MM/dd/yyyy")
+                </td>
+
+                <td>
+
+                    @if (item.DateAssigned.HasValue)
+                {
+                        @item.DateAssigned.Value.ToString("MM/dd/yyyy")
+                    }
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.EquipmentID }, htmlAttributes: new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Details", "Details", new { id = item.EquipmentID }, htmlAttributes: new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.EquipmentID }, htmlAttributes: new { @class = "btn btn-primary" })
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>

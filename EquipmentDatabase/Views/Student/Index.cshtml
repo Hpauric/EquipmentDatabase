@@ -14,7 +14,8 @@
         $('#table-id').DataTable({
             "initComplete": function (settings, json) {
                 $('#table-id').show();
-            }
+            },
+            "pageLength": 50
         });
     });
 </script>
@@ -83,10 +84,12 @@
                             </td>
                         }
                     }
-                    if (count == 0) {
-                    <td></td><td></td>
+                    if (count == 0)
+                    {
+                        <td></td>
+                        <td></td>
                     }
-                    else if(count == 1)
+                    else if (count == 1)
                     {
                         <td></td>
                     }

@@ -3,7 +3,7 @@ namespace EquipmentDatabase.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class requiredfieldequipment : DbMigration
+    public partial class requiredfieldsequipment : DbMigration
     {
         public override void Up()
         {
