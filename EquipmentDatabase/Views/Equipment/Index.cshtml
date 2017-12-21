@@ -4,9 +4,16 @@
     ViewBag.Title = "Index";
 }
 
+
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css">
+
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
 
 <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
+
 
 
 <script type='text/javascript'>
@@ -15,7 +22,27 @@
             "initComplete": function (settings, json) {
                 $('#table-id').show();
             },
-            "pageLength": 50
+            "pageLength": 50,
+            responsive: {
+                details: {
+                    type: 'column',
+                    target: '.extend-button'
+                }
+            },
+            "columns": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                { "orderable": false },
+                { "orderable": false },
+                { "orderable": false },
+                { "orderable": false },
+                { "orderable": false }
+            ]
         });
     });
 </script>
@@ -27,7 +54,7 @@
     @Html.ActionLink("Add Shipment", "BulkCreate", "", htmlAttributes: new { @class = "btn btn-primary" })
 
 </p>
-<table class="display" id="table-id" hidden>
+<table id="table-id" class="display nowrap" cellspacing="0" width="100%" hidden>
     <thead>
         <tr>
             <th>
@@ -61,6 +88,11 @@
             </th>
 
             <th></th>
+            <th></th>
+            <th></th>
+            <th class="none">Model</th>
+            <th class="none">Location</th>
+
         </tr>
     </thead>
     <tbody>
@@ -98,12 +130,26 @@
                         @item.DateAssigned.Value.ToString("MM/dd/yyyy")
                     }
                 </td>
-
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.EquipmentID }, htmlAttributes: new { @class = "btn btn-primary" })
-                    @Html.ActionLink("Details", "Details", new { id = item.EquipmentID }, htmlAttributes: new { @class = "btn btn-primary" })
+                </td>
+                <td>
+                    @*@Html.ActionLink("Details", "Details", new { id = item.EquipmentID }, htmlAttributes: new { @class = "btn btn-primary extend-button" })*@
+                    <button class="extend-button btn btn-primary">Details</button>
+                </td>
+                <td>
                     @Html.ActionLink("Delete", "Delete", new { id = item.EquipmentID }, htmlAttributes: new { @class = "btn btn-primary" })
                 </td>
+
+                <td class="none">
+                   @Html.DisplayFor(modelItem => item.ModelName)
+                </td>
+                <td class="none">
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+
+
+
             </tr>
         }
     </tbody>
