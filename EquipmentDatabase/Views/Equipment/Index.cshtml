@@ -41,13 +41,16 @@
                 { "orderable": false },
                 { "orderable": false },
                 { "orderable": false },
+                { "orderable": false },
+                { "orderable": false },
+                { "orderable": false },
                 { "orderable": false }
             ]
         });
     });
 </script>
 
-<h2>Index</h2>
+<h2>Equipment List</h2>
 
 <p>
     @Html.ActionLink("Add Equipment", "Create", "", htmlAttributes: new { @class = "btn btn-primary" })
@@ -92,6 +95,9 @@
             <th></th>
             <th class="none">Model</th>
             <th class="none">Location</th>
+            <th class="none">Status</th>
+            <th class="none">Service Tag</th>
+            <th class="none">Software</th>
 
         </tr>
     </thead>
@@ -146,6 +152,15 @@
                 </td>
                 <td class="none">
                     @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                <td class="none">
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td class="none">
+                    @Html.DisplayFor(modelItem => item.ServiceTag)
+                </td>
+                <td class="none">
+                    @Html.DisplayFor(modelItem => item.Software)
                 </td>
 
 
