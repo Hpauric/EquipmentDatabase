@@ -3,6 +3,7 @@ namespace EquipmentDatabase.Migrations
     using CsvHelper;
     using EquipmentDatabase.DAL;
     using System;
+    using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Diagnostics;
     using System.IO;
@@ -24,23 +25,23 @@ namespace EquipmentDatabase.Migrations
             //throw new Exception(assembly.ToString());
 
 
-            var equipments = context.Equipments.ToArray();
-            foreach (var item in equipments)
-            {
-                //if(item.DatePurchased == null)
-                //{
-                //    item.DatePurchased = new DateTime(2017,1,1);
-                //}
-                if(item.StudentID != null)
-                {
-                    item.Location = "With Student";
+            //var equipments = context.Equipments.ToArray();
+            //foreach (var item in equipments)
+            //{
+            //    //if(item.DatePurchased == null)
+            //    //{
+            //    //    item.DatePurchased = new DateTime(2017,1,1);
+            //    //}
+            //    if(item.StudentID != null)
+            //    {
+            ////        item.Location = "With Student";
 
-                }
+            ////    }
 
                 
 
-            }
-            context.Equipments.AddOrUpdate(equipments);
+            ////}
+            //context.Equipments.AddOrUpdate(equipments);
 
             string[] names = assembly.GetManifestResourceNames();
             string fullString = "";
@@ -48,25 +49,53 @@ namespace EquipmentDatabase.Migrations
 
             //throw new Exception(fullString);
 
-            string resourceName = "EquipmentDatabase.Migrations.SeedData.STUDENT_MOCK_DATA.csv";
+            //string resourceName = "EquipmentDatabase.Migrations.SeedData.STUDENT_MOCK_DATA.csv";
             
-            //Debug.WriteLine(resourceName);
-            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-            {
-                
+            ////Debug.WriteLine(resourceName);
+            //using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            //{
+            //    using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
+            //    {
+            //        CsvReader csvReader = new CsvReader(reader);
+            //        csvReader.Configuration.WillThrowOnMissingField = false;
+            //        var students = csvReader.GetRecords<EquipmentDatabase.Models.Student>().ToArray();
+            //        //context.Students.AddOrUpdate(c => c.LastName, students);
+            //        context.Students.AddOrUpdate(students);
+            //    }
+            //}
 
+            string resourcename2 = "EquipmentDatabase.Migrations.SeedData.EQUIPMENT_MOCK_DATA.csv";
+
+            using (Stream stream = assembly.GetManifestResourceStream(resourcename2))
+            {
                 using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
                 {
-                    
-
                     CsvReader csvReader = new CsvReader(reader);
                     csvReader.Configuration.WillThrowOnMissingField = false;
-                    var students = csvReader.GetRecords<EquipmentDatabase.Models.Student>().ToArray();
+                    var equipments2 = csvReader.GetRecords<EquipmentDatabase.Models.Equipment>().ToArray();
                     //context.Students.AddOrUpdate(c => c.LastName, students);
-                    context.Students.AddOrUpdate(students);
+
+                    context.Equipments.AddOrUpdate(c => c.StudentID, equipments2);
+
+                    //foreach (var item in equipments2)
+                    //{
+                    //    context.Entry(item.Student).State = EntityState.Unchanged;
+
+                    //    context.
+                    //    context.Students.Find(.State = EntityState.Unchanged;
+
+                    //    context.Equipments.Add(item);
+
+                    //    context.SaveChanges();
+                    //}
+
+                    //context.Entry(Equipments.StudentID).State = EntityState.Unchanged;
+
+                    //context.Equipments.AddOrUpdate(equipments2);
 
                 }
             }
+
 
 
             //  This method will be called after migrating to the latest version.
@@ -86,13 +115,13 @@ namespace EquipmentDatabase.Migrations
 
             //    context.OrderLines.Add(orderLine);
             //    return orderLine;
-        //    //}
-        //    private ProjectContext db = new ProjectContext();
-        //var equipments = db.Equipments.Include(e => e.EquipmentID);
+            //    //}
+            //    private ProjectContext db = new ProjectContext();
+            //var equipments = db.Equipments.Include(e => e.EquipmentID);
 
-        //    //context.Equipments.AddOrUpdate(
-        //    //  p => p.DatePurchased,
-        //    //    { this.DatePurchased = "2007"}
+            //    //context.Equipments.AddOrUpdate(
+            //    //  p => p.DatePurchased,
+            //    //    { this.DatePurchased = "2007"}
 
             //);
 
