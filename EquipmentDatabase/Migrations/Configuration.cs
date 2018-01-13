@@ -27,17 +27,23 @@ namespace EquipmentDatabase.Migrations
             var equipments = context.Equipments.ToArray();
             foreach (var item in equipments)
             {
-                //if(item.DatePurchased == null)
+                //if (item.DatePurchased == null)
                 //{
-                //    item.DatePurchased = new DateTime(2017,1,1);
+                //    item.DatePurchased = new DateTime(2017, 1, 1);
                 //}
-                if(item.StudentID != null)
-                {
-                    item.Location = "With Student";
 
-                }
+                //if (item.EquipmentType == null)
+                //{
+                //    item.EquipmentType = "Livescribe";
+                //}
 
-                
+                //if (item.StudentID != null)
+                //{
+                //    item.Location = "With Student";
+
+                //}
+
+
 
             }
             context.Equipments.AddOrUpdate(equipments);

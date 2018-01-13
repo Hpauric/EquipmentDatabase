@@ -3,7 +3,7 @@ namespace EquipmentDatabase.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initial : DbMigration
+    public partial class initial : DbMigration
     {
         public override void Up()
         {
@@ -12,12 +12,20 @@ namespace EquipmentDatabase.Migrations
                 c => new
                     {
                         EquipmentID = c.Int(nullable: false, identity: true),
-                        DateAssigned = c.DateTime(nullable: false),
-                        EquipmentType = c.String(),
-                        StudentID = c.Int(nullable: false),
+                        DatePurchased = c.DateTime(nullable: false),
+                        DateAssigned = c.DateTime(),
+                        EquipmentType = c.String(nullable: false),
+                        ModelName = c.String(),
+                        Location = c.String(),
+                        Status = c.String(),
+                        ServiceTag = c.String(),
+                        Software = c.String(),
+                        Password = c.String(),
+                        Notes = c.String(),
+                        StudentID = c.Int(),
                     })
                 .PrimaryKey(t => t.EquipmentID)
-                .ForeignKey("dbo.Student", t => t.StudentID, cascadeDelete: true)
+                .ForeignKey("dbo.Student", t => t.StudentID)
                 .Index(t => t.StudentID);
             
             CreateTable(

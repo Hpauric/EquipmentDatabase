@@ -171,57 +171,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710021217244_Initial.cs" />
-    <Compile Include="Migrations\201710021217244_Initial.Designer.cs">
-      <DependentUpon>201710021217244_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710051719012_SeedDataTest.cs" />
-    <Compile Include="Migrations\201710051719012_SeedDataTest.Designer.cs">
-      <DependentUpon>201710051719012_SeedDataTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712051349481_equipment-type-added.cs" />
-    <Compile Include="Migrations\201712051349481_equipment-type-added.Designer.cs">
-      <DependentUpon>201712051349481_equipment-type-added.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712121407359_date-purchased-added-to-equipment.cs" />
-    <Compile Include="Migrations\201712121407359_date-purchased-added-to-equipment.Designer.cs">
-      <DependentUpon>201712121407359_date-purchased-added-to-equipment.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712121451507_type-correction-date-purchased.cs" />
-    <Compile Include="Migrations\201712121451507_type-correction-date-purchased.Designer.cs">
-      <DependentUpon>201712121451507_type-correction-date-purchased.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712121543244_nullable-dates.cs" />
-    <Compile Include="Migrations\201712121543244_nullable-dates.Designer.cs">
-      <DependentUpon>201712121543244_nullable-dates.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712141146438_new-date-format.cs" />
-    <Compile Include="Migrations\201712141146438_new-date-format.Designer.cs">
-      <DependentUpon>201712141146438_new-date-format.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712201112588_seed-only.cs" />
-    <Compile Include="Migrations\201712201112588_seed-only.Designer.cs">
-      <DependentUpon>201712201112588_seed-only.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712201117135_required-fields-equipment.cs" />
-    <Compile Include="Migrations\201712201117135_required-fields-equipment.Designer.cs">
-      <DependentUpon>201712201117135_required-fields-equipment.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712201746382_equipment-location-field-added.cs" />
-    <Compile Include="Migrations\201712201746382_equipment-location-field-added.Designer.cs">
-      <DependentUpon>201712201746382_equipment-location-field-added.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712201748490_seed-only2.cs" />
-    <Compile Include="Migrations\201712201748490_seed-only2.Designer.cs">
-      <DependentUpon>201712201748490_seed-only2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712211436449_password-status-notes-added-to-equipment-model.cs" />
-    <Compile Include="Migrations\201712211436449_password-status-notes-added-to-equipment-model.Designer.cs">
-      <DependentUpon>201712211436449_password-status-notes-added-to-equipment-model.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712211511510_notes-field-added-to-equipment.cs" />
-    <Compile Include="Migrations\201712211511510_notes-field-added-to-equipment.Designer.cs">
-      <DependentUpon>201712211511510_notes-field-added-to-equipment.cs</DependentUpon>
+    <Compile Include="Migrations\201712291027030_initial.cs" />
+    <Compile Include="Migrations\201712291027030_initial.Designer.cs">
+      <DependentUpon>201712291027030_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Equipment.cs" />
@@ -240,38 +192,8 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="Migrations\201712051349481_equipment-type-added.resx">
-      <DependentUpon>201712051349481_equipment-type-added.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712121407359_date-purchased-added-to-equipment.resx">
-      <DependentUpon>201712121407359_date-purchased-added-to-equipment.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712121451507_type-correction-date-purchased.resx">
-      <DependentUpon>201712121451507_type-correction-date-purchased.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712121543244_nullable-dates.resx">
-      <DependentUpon>201712121543244_nullable-dates.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712141146438_new-date-format.resx">
-      <DependentUpon>201712141146438_new-date-format.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712201112588_seed-only.resx">
-      <DependentUpon>201712201112588_seed-only.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712201117135_required-fields-equipment.resx">
-      <DependentUpon>201712201117135_required-fields-equipment.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712201746382_equipment-location-field-added.resx">
-      <DependentUpon>201712201746382_equipment-location-field-added.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712201748490_seed-only2.resx">
-      <DependentUpon>201712201748490_seed-only2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712211436449_password-status-notes-added-to-equipment-model.resx">
-      <DependentUpon>201712211436449_password-status-notes-added-to-equipment-model.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712211511510_notes-field-added-to-equipment.resx">
-      <DependentUpon>201712211511510_notes-field-added-to-equipment.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712291027030_initial.resx">
+      <DependentUpon>201712291027030_initial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\SeedData\STUDENT_MOCK_DATA.csv" />
     <None Include="Properties\PublishProfiles\equipmenttest - Web Deploy.pubxml" />
@@ -337,14 +259,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201710021217244_Initial.resx">
-      <DependentUpon>201710021217244_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710051719012_SeedDataTest.resx">
-      <DependentUpon>201710051719012_SeedDataTest.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

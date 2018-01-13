@@ -17,6 +17,30 @@ namespace EquipmentDatabase.DAL
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            //modelBuilder.Entity<Equipment>()
+            //    .HasOptional<Student>(s => s.Student)
+            //    .WithMany()
+            //    .HasForeignKey(s => s.StudentID)
+            //    .WillCascadeOnDelete();
+
+
+
+            //modelBuilder.Entity<Student>()
+            //.HasOptional<Standard>(s => s.Standard)
+            //.WithMany()
+            //.WillCascadeOnDelete(false);
+
+
+            //modelBuilder.Entity<Equipment>()
+            //    .HasKey(o => o.StudentID).
+            //    .WillCascadeOnDelete(true);
+
+
+
+            //.HasForeignKey(o => o.StudentID)
+            //.WillCascadeOnDelete(true);
+
         }
     }
 }
