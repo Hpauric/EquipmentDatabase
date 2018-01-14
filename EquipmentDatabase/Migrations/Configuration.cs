@@ -2,7 +2,9 @@ namespace EquipmentDatabase.Migrations
 {
     using CsvHelper;
     using EquipmentDatabase.DAL;
+    using EquipmentDatabase.Models;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Diagnostics;
@@ -20,81 +22,62 @@ namespace EquipmentDatabase.Migrations
 
         protected override void Seed(EquipmentDatabase.DAL.ProjectContext context)
         {
-            Assembly assembly = Assembly.GetExecutingAssembly();
 
-            //throw new Exception(assembly.ToString());
+            var students = context.Students.ToList();
 
-
-            //var equipments = context.Equipments.ToArray();
-            //foreach (var item in equipments)
-            //{
-            //    //if(item.DatePurchased == null)
-            //    //{
-            //    //    item.DatePurchased = new DateTime(2017,1,1);
-            //    //}
-            //    if(item.StudentID != null)
-            //    {
-            ////        item.Location = "With Student";
-
-            ////    }
-
-                
-
-            ////}
-            //context.Equipments.AddOrUpdate(equipments);
-
-            string[] names = assembly.GetManifestResourceNames();
-            string fullString = "";
-            names.ToList().ForEach(i => fullString += (i.ToString()) + '\n');
-
-            //throw new Exception(fullString);
-
-            //string resourceName = "EquipmentDatabase.Migrations.SeedData.STUDENT_MOCK_DATA.csv";
-            
-            ////Debug.WriteLine(resourceName);
-            //using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-            //{
-            //    using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
-            //    {
-            //        CsvReader csvReader = new CsvReader(reader);
-            //        csvReader.Configuration.WillThrowOnMissingField = false;
-            //        var students = csvReader.GetRecords<EquipmentDatabase.Models.Student>().ToArray();
-            //        //context.Students.AddOrUpdate(c => c.LastName, students);
-            //        context.Students.AddOrUpdate(students);
-            //    }
-            //}
-
-            string resourcename2 = "EquipmentDatabase.Migrations.SeedData.EQUIPMENT_MOCK_DATA.csv";
-
-            using (Stream stream = assembly.GetManifestResourceStream(resourcename2))
+            var equipments = new List<Equipment>
             {
-                using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
-                {
-                    CsvReader csvReader = new CsvReader(reader);
-                    csvReader.Configuration.WillThrowOnMissingField = false;
-                    var equipments2 = csvReader.GetRecords<EquipmentDatabase.Models.Equipment>().ToArray();
-                    //context.Students.AddOrUpdate(c => c.LastName, students);
-
-                    context.Equipments.AddOrUpdate(c => c.StudentID, equipments2);
-
-                    //foreach (var item in equipments2)
-                    //{
-                    //    context.Entry(item.Student).State = EntityState.Unchanged;
-
-                    //    context.
-                    //    context.Students.Find(.State = EntityState.Unchanged;
-
-                    //    context.Equipments.Add(item);
-
-                    //    context.SaveChanges();
-                    //}
-
-                    //context.Entry(Equipments.StudentID).State = EntityState.Unchanged;
-
-                    //context.Equipments.AddOrUpdate(equipments2);
-
-                }
+                new Equipment { 
+                // enrollment details are taken from students and courses Lists
+                    StudentID = students.Single(s => s.StudentID == 1006725).StudentID,
+                    DatePurchased = new DateTime(2017,1,1),
+                    DateAssigned = new DateTime(2017,1,1),
+                    EquipmentType = "Laptop",
+                    ModelName = "Latitude E5520",
+                    ServiceTag = "IHRYPEA",
+                    Password = "Password",
+                    Notes = "battery issue - no battery is detected"
+                    },
+                new Equipment { 
+                // enrollment details are taken from students and courses Lists
+                    StudentID = students.Single(s => s.StudentID == 1007171).StudentID,
+                    DatePurchased = new DateTime(2017,1,1),
+                    DateAssigned = new DateTime(2017,1,1),
+                    EquipmentType = "Laptop",
+                    ModelName = "Latitude E5520",
+                    ServiceTag = "XSRKQTL",
+                    Password = "Password",
+                    Notes = "battery issue - no battery is detected"
+                    },
+                new Equipment { 
+                // enrollment details are taken from students and courses Lists
+                    StudentID = students.Single(s => s.StudentID == 1008021).StudentID,
+                    DatePurchased = new DateTime(2017,1,1),
+                    DateAssigned = new DateTime(2017,1,1),
+                    EquipmentType = "Laptop",
+                    ModelName = "Latitude E5520"},
+                new Equipment { 
+                // enrollment details are taken from students and courses Lists
+                    StudentID = students.Single(s => s.StudentID == 1014357).StudentID,
+                    DatePurchased = new DateTime(2017,1,1),
+                    DateAssigned = new DateTime(2017,1,1),
+                    EquipmentType = "Laptop",
+                    ModelName = "Latitude E5520"}
+            };
+            
+            foreach (Equipment e in equipments)
+            {
+                e.Location = "Main Office";
+                context.Equipments.Add(e);
             }
+
+
+
+
+
+
+
+
 
 
 

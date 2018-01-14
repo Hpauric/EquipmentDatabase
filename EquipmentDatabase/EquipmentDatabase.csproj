@@ -175,6 +175,10 @@
     <Compile Include="Migrations\201712291027030_initial.Designer.cs">
       <DependentUpon>201712291027030_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801132333374_new-seed-data.cs" />
+    <Compile Include="Migrations\201801132333374_new-seed-data.Designer.cs">
+      <DependentUpon>201801132333374_new-seed-data.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Equipment.cs" />
     <Compile Include="Models\Student.cs" />
@@ -195,8 +199,12 @@
     <EmbeddedResource Include="Migrations\201712291027030_initial.resx">
       <DependentUpon>201712291027030_initial.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801132333374_new-seed-data.resx">
+      <DependentUpon>201801132333374_new-seed-data.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\SeedData\STUDENT_MOCK_DATA.csv" />
     <EmbeddedResource Include="Migrations\SeedData\EQUIPMENT_MOCK_DATA.csv" />
+    <EmbeddedResource Include="Migrations\SeedData\EQUIPMENT_MOCK_DATA2.csv" />
     <None Include="Properties\PublishProfiles\equipmenttest - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\myWebAppWithSql2 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

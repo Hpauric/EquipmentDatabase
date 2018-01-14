@@ -117,12 +117,14 @@ namespace EquipmentDatabase.Controllers
             {
                 ViewBag.ErrorMessage = "Delete failed. Try again, and if the problem persists see your system administrator.";
             }
+
             Student student = db.Students.Find(id);
             if (student == null)
             {
                 return HttpNotFound();
             }
             return View(student);
+            
         }
 
         // POST: Student/Delete/5
@@ -132,8 +134,26 @@ namespace EquipmentDatabase.Controllers
         {
             try
             {
-                Student student = db.Students.Find(id);
+                Student student = db.Students
+           .Include(i => i.Equipment)
+           .Where(i => i.StudentID == id)
+            .Single();
+
+                if (student == null)
+                {
+                    return HttpNotFound();
+                }
+
                 db.Students.Remove(student);
+
+                var equipment = db.Equipments
+                    .Where(d => d.StudentID == id)
+                    .SingleOrDefault();
+                if (equipment != null)
+                {
+                    equipment.StudentID = null;
+                }
+
                 db.SaveChanges();
             }
             catch (DataException/* dex */)
