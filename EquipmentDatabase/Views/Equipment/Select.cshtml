@@ -66,10 +66,7 @@
             </td>
 
             <td>
-                @if (item.DatePurchased.HasValue)
-                {
-                    @item.DatePurchased.Value.ToString("MM/dd/yyyy")
-                }
+                @item.DatePurchased.ToString("MM/dd/yyyy")
             </td>
 
             <td>

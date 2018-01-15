@@ -44,6 +44,7 @@
                 { "orderable": false },
                 { "orderable": false },
                 { "orderable": false },
+                { "orderable": false },
                 { "orderable": false }
             ]
         });
@@ -98,6 +99,7 @@
             <th class="none">Status</th>
             <th class="none">Service Tag</th>
             <th class="none">Software</th>
+            <th class="none">Notes</th>
 
         </tr>
     </thead>
@@ -161,6 +163,9 @@
                 </td>
                 <td class="none">
                     @Html.DisplayFor(modelItem => item.Software)
+                </td>
+                <td class="none">
+                    @Html.DisplayFor(modelItem => item.Notes)
                 </td>
 
 

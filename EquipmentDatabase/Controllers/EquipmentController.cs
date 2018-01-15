@@ -176,9 +176,8 @@ namespace EquipmentDatabase.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EquipmentID,DatePurchased,DateAssigned,EquipmentType,StudentID")] Equipment equipment)
+        public ActionResult Edit([Bind(Include = "EquipmentID,DatePurchased,DateAssigned,EquipmentType,StudentID,ModelName,Location,Status,ServiceTag,Software,Notes")] Equipment equipment)
         {
-
 
             if (ModelState.IsValid)
             {
@@ -206,8 +205,6 @@ namespace EquipmentDatabase.Controllers
 
             Equipment equipment = db.Equipments.Find(ID);
 
-
-            
             if (StudentID > 10)
             {
                 try
@@ -215,7 +212,11 @@ namespace EquipmentDatabase.Controllers
                     equipment.StudentID = StudentID;
                     db.Entry(equipment).State = EntityState.Modified;
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+
+                    //return RedirectToRoute()
+                    return RedirectToAction("Details", "Student", new { id = StudentID });
+                    //return View("Details", "Student");
+                    //return RedirectToAction("Index");
                 }
                 catch (DataException dex)
                 {
