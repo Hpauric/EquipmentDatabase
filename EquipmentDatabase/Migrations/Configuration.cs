@@ -22,70 +22,27 @@ namespace EquipmentDatabase.Migrations
 
         protected override void Seed(EquipmentDatabase.DAL.ProjectContext context)
         {
-            //var students = new List<Student>();
+            var students = new List<Student>();
             Assembly assembly = Assembly.GetExecutingAssembly();
-            //string[] names = assembly.GetManifestResourceNames();
-            //string fullString = "";
-            //names.ToList().ForEach(i => fullString += (i.ToString()) + '\n');
-            //string resourceName = "EquipmentDatabase.Migrations.SeedData.STUDENT_MOCK_DATA.csv";
+            string[] names = assembly.GetManifestResourceNames();
+            string fullString = "";
+            names.ToList().ForEach(i => fullString += (i.ToString()) + '\n');
+            string resourceName = "EquipmentDatabase.Migrations.SeedData.STUDENT_MOCK_DATA.csv";
 
-            //using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-            //{
-            //    using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
-            //    {
-            //        CsvReader csvReader = new CsvReader(reader);
-            //        students = csvReader.GetRecords<EquipmentDatabase.Models.Student>().ToList();
-            //        context.Students.AddOrUpdate(c => c.LastName, students.ToArray());
-            //    }
-            //}
-
-
-            var students = context.Students.ToList();
-
-            var equipments = new List<Equipment>
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
             {
-                new Equipment
+                using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
                 {
-                    // enrollment details are taken from students and courses Lists
-                    StudentID = students.Single(s => s.StudentID == 1006725).StudentID,
-                    DatePurchased = new DateTime(2017, 1, 1),
-                    DateAssigned = new DateTime(2017, 1, 1),
-                    EquipmentType = "Laptop",
-                    ModelName = "Latitude E5520",
-                    ServiceTag = "IHRYPEA",
-                    Password = "Password",
-                    Notes = "battery issue - no battery is detected"
-                },
-                new Equipment
-                {
-                    // enrollment details are taken from students and courses Lists
-                    StudentID = students.Single(s => s.StudentID == 1007171).StudentID,
-                    DatePurchased = new DateTime(2017, 1, 1),
-                    DateAssigned = new DateTime(2017, 1, 1),
-                    EquipmentType = "Laptop",
-                    ModelName = "Latitude E5520",
-                    ServiceTag = "XSRKQTL",
-                    Password = "Password",
-                    Notes = "battery issue - no battery is detected"
-                    },
-                new Equipment { 
-                // enrollment details are taken from students and courses Lists
-                    StudentID = students.Single(s => s.StudentID == 1008021).StudentID,
-                    DatePurchased = new DateTime(2017,1,1),
-                    DateAssigned = new DateTime(2017,1,1),
-                    EquipmentType = "Laptop",
-                    ModelName = "Latitude E5520"},
-                new Equipment { 
-                // enrollment details are taken from students and courses Lists
-                    StudentID = students.Single(s => s.StudentID == 1014357).StudentID,
-                    DatePurchased = new DateTime(2017,1,1),
-                    DateAssigned = new DateTime(2017,1,1),
-                    EquipmentType = "Laptop",
-                    ModelName = "Latitude E5520"}
-            };
+                    CsvReader csvReader = new CsvReader(reader);
+                    students = csvReader.GetRecords<EquipmentDatabase.Models.Student>().ToList();
+                    context.Students.AddOrUpdate(c => c.StudentID, students.ToArray());
+                }
+            }
 
-            
 
+            //var students = context.Students.ToList();
+
+            var equipments = new List<Equipment> {};
 
             string resourceName2 = "EquipmentDatabase.Migrations.SeedData.EQUIPMENT_MOCK_DATA2.csv";
 
