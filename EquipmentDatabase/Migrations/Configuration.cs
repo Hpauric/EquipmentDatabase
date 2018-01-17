@@ -13,7 +13,7 @@ namespace EquipmentDatabase.Migrations
     using System.Reflection;
     using System.Text;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<EquipmentDatabase.DAL.ProjectContext>
+    internal sealed partial class Configuration : DbMigrationsConfiguration<EquipmentDatabase.DAL.ProjectContext>
     {
         public Configuration()
         {
@@ -22,27 +22,46 @@ namespace EquipmentDatabase.Migrations
 
         protected override void Seed(EquipmentDatabase.DAL.ProjectContext context)
         {
+            //var students = new List<Student>();
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            //string[] names = assembly.GetManifestResourceNames();
+            //string fullString = "";
+            //names.ToList().ForEach(i => fullString += (i.ToString()) + '\n');
+            //string resourceName = "EquipmentDatabase.Migrations.SeedData.STUDENT_MOCK_DATA.csv";
+
+            //using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            //{
+            //    using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
+            //    {
+            //        CsvReader csvReader = new CsvReader(reader);
+            //        students = csvReader.GetRecords<EquipmentDatabase.Models.Student>().ToList();
+            //        context.Students.AddOrUpdate(c => c.LastName, students.ToArray());
+            //    }
+            //}
+
 
             var students = context.Students.ToList();
 
             var equipments = new List<Equipment>
             {
-                new Equipment { 
-                // enrollment details are taken from students and courses Lists
+                new Equipment
+                {
+                    // enrollment details are taken from students and courses Lists
                     StudentID = students.Single(s => s.StudentID == 1006725).StudentID,
-                    DatePurchased = new DateTime(2017,1,1),
-                    DateAssigned = new DateTime(2017,1,1),
+                    DatePurchased = new DateTime(2017, 1, 1),
+                    DateAssigned = new DateTime(2017, 1, 1),
                     EquipmentType = "Laptop",
                     ModelName = "Latitude E5520",
                     ServiceTag = "IHRYPEA",
                     Password = "Password",
                     Notes = "battery issue - no battery is detected"
-                    },
-                new Equipment { 
-                // enrollment details are taken from students and courses Lists
+                },
+                new Equipment
+                {
+                    // enrollment details are taken from students and courses Lists
                     StudentID = students.Single(s => s.StudentID == 1007171).StudentID,
-                    DatePurchased = new DateTime(2017,1,1),
-                    DateAssigned = new DateTime(2017,1,1),
+                    DatePurchased = new DateTime(2017, 1, 1),
+                    DateAssigned = new DateTime(2017, 1, 1),
                     EquipmentType = "Laptop",
                     ModelName = "Latitude E5520",
                     ServiceTag = "XSRKQTL",
@@ -64,21 +83,58 @@ namespace EquipmentDatabase.Migrations
                     EquipmentType = "Laptop",
                     ModelName = "Latitude E5520"}
             };
+
             
-            foreach (Equipment e in equipments)
+
+
+            string resourceName2 = "EquipmentDatabase.Migrations.SeedData.EQUIPMENT_MOCK_DATA2.csv";
+
+            string testString = "hello";
+
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName2))
             {
-                e.Location = "Main Office";
-                context.Equipments.Add(e);
+                using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
+                {
+                        CsvReader csvReader = new CsvReader(reader);
+                        var equipments2 = csvReader.GetRecords<EquipmentDatabase.Models.TestClass>().ToArray();
+
+                    foreach (TestClass e in equipments2)
+                    {
+                       // testString = testString.Insert(0, e.EquipmentType + Environment.NewLine);
+                        equipments.Add(new Equipment
+                        {
+                            StudentID = students.Single(s => s.StudentID == e.StudentID).StudentID,
+                            DatePurchased = new DateTime(2017, 1, 1),
+                            DateAssigned = new DateTime(2017, 1, 1),
+                            EquipmentType = e.EquipmentType,
+                            ModelName = e.ModelName,
+                            Location = e.Location,
+                            Status = e.Status,
+                            Software = e.Software,
+                            ServiceTag = e.ServiceTag,
+                            Password = e.Password,
+                            Notes = e.Notes
+                        });
+
+                    }
+
+                    
+
+                    foreach (Equipment e in equipments)
+                    {
+                        context.Equipments.Add(e);
+                        
+                    }
+                    
+                    //context.Equipments.AddOrUpdate(c => c.StudentID, equipments.ToArray());
+                    //   for(var i = 0; i < 10; i++)
+                    //{
+                    //    testString = testString.Insert(0, testString + System.Environment.NewLine);
+                    //}
+                    //throw new Exception(testString);
+
+                }
             }
-
-
-
-
-
-
-
-
-
 
 
             //  This method will be called after migrating to the latest version.

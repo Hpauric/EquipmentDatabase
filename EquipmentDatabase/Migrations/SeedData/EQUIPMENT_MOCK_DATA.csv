@@ -1,29 +1,30 @@
 EquipmentID,DatePurchased,DateAssigned,EquipmentType,ModelName,Location,Status,Software,ServiceTag,Password,Notes,StudentID
-100,01/01/2015,02/01/2018,Livescribe,Echo 2 GB,Main Office,,,,password,,
-101,01/01/2015,02/01/2018,Livescribe,Echo 2 GB,Main Office,,,,password,,
-102,01/01/2015,02/01/2018,Livescribe,Echo 2 GB,Main Office,,,,password,,
-103,01/01/2015,02/01/2018,Livescribe,Echo 2 GB,Main Office,,,,password,,
-104,01/01/2015,02/01/2018,Livescribe,Echo 2 GB,Main Office,,,,password,,
-105,01/01/2015,02/01/2018,Livescribe,Echo 2 GB,Main Office,,,,password,,
-106,01/01/2015,02/01/2018,Livescribe,Echo 2 GB,Main Office,,,,password,,
-107,01/01/2015,02/01/2018,Livescribe,Echo 2 GB,Main Office,,,,password,,
-108,01/01/2015,02/01/2018,Livescribe,Echo 2 GB,Main Office,,,,password,,
-110,01/01/2015,02/01/2018,Livescribe,Echo 2 GB,Main Office,,,,password,,
-111,01/01/2015,02/01/2018,Laptop,Dell Latitude 5580,Main Office,Exam Set-up,,IHRYPEA,password,,
-112,01/01/2015,02/01/2018,Laptop,Dell Latitude 5480,Main Office,Exam Set-up,,XSRKQTL,password,,
-113,01/01/2015,02/01/2018,Laptop,Dell Latitude 5480,Main Office,Exam Set-up,,SGYCDTI,password,,
-114,01/01/2015,02/01/2018,Laptop,Dell Latitude 5480,Main Office,AT Demonstration Set-up,Voice Recognition,ERXBMGO,password,,
-115,01/01/2015,02/01/2018,Laptop,Dell Latitude 5480,Main Office,Exam Set-up,Voice Recognition,DKMEZNO,password,,
-116,01/01/2015,02/01/2018,Laptop,Dell Latitude 5480,Main Office,Exam Set-up,,QWPNCKR,password,,
-117,01/01/2015,02/01/2018,Laptop,Dell Latitude E5430,Main Office,General Use Set-up,,YNMPEKI,password,,
-118,01/01/2015,02/01/2018,Laptop,Dell Latitude E5530,Main Office,General Use Set-up,Magnification software,KNOFXPW,password,,
-119,01/01/2015,02/01/2018,Laptop,Dell Latitude E5520,Main Office,Broken,,HVTLRSJ,password,battery issue - no battery is detected,
-120,01/01/2015,02/01/2018,Laptop,Dell Latitude E5520,Main Office,Broken,Voice Recognition,SANZLXQ,password,,
-121,01/01/2015,02/01/2018,Laptop,Dell Latitude E5520,Main Office,General Use Set-up,,RFTPWJI,password,,
-122,01/01/2015,02/01/2018,Laptop,Dell Latitude E5520,Main Office,General Use Set-up,,AHZXNUO,password,,
-123,01/01/2015,02/01/2018,Laptop,Dell Latitude E5520,Main Office,General Use Set-up,,SUCOKJA,password,,
-124,01/01/2015,02/01/2018,Laptop,Dell Latitude E5520,Main Office,General Use Set-up,,WIJSPEX,password,,
-125,01/01/2015,02/01/2018,Laptop,Dell Latitude E5520,Main Office,General Use Set-up,,JANTWDV,password,,
-127,01/01/2015,02/01/2018,Laptop,Dell Latitude E5520,Main Office,General Use Set-up,,LGBDRNS,password,,
-128,01/01/2015,02/01/2018,Laptop,Dell Latitude E5520,Main Office,Exam Set-up,,RJIFYVK,password,back-up laptop,
-129,01/01/2015,02/01/2018,Laptop,Dell Latitude E5520,Main Office,Exam Set-up,,ZHFBKRO,password,,
+100,01/01/2015,02/01/2018,Livescribe,Echo 2 GB,Main Office,,,,password,,1969592
+101,01/01/2015,02/01/2018,Livescribe,Echo 2 GB,Main Office,,,,password,,2267793
+102,01/01/2015,02/01/2018,Livescribe,Echo 2 GB,Main Office,,,,password,,7506355
+103,01/01/2015,02/01/2018,Livescribe,Echo 2 GB,Main Office,,,,password,,2036988
+104,01/01/2015,02/01/2018,Livescribe,Echo 2 GB,Main Office,,,,password,,5064637
+105,01/01/2015,02/01/2018,Livescribe,Echo 2 GB,Main Office,,,,password,,3290201
+106,01/01/2015,02/01/2018,Livescribe,Echo 2 GB,Main Office,,,,password,,5906784
+107,01/01/2015,02/01/2018,Livescribe,Echo 2 GB,Main Office,,,,password,,3093194
+108,01/01/2015,02/01/2018,Livescribe,Echo 2 GB,Main Office,,,,password,,5305701
+110,01/01/2015,02/01/2018,Livescribe,Echo 2 GB,Main Office,,,,password,,1062821
+111,01/01/2015,02/01/2018,Laptop,Dell Latitude 5580,Main Office,Exam Set-up,,IHRYPEA,password,,6615802
+112,01/01/2015,02/01/2018,Laptop,Dell Latitude 5480,Main Office,Exam Set-up,,XSRKQTL,password,,6848887
+113,01/01/2015,02/01/2018,Laptop,Dell Latitude 5480,Main Office,Exam Set-up,,SGYCDTI,password,,7711688
+114,01/01/2015,02/01/2018,Laptop,Dell Latitude 5480,Main Office,AT Demonstration Set-up,Voice Recognition,ERXBMGO,password,,6564733
+115,01/01/2015,02/01/2018,Laptop,Dell Latitude 5480,Main Office,Exam Set-up,Voice Recognition,DKMEZNO,password,,4795192
+116,01/01/2015,02/01/2018,Laptop,Dell Latitude 5480,Main Office,Exam Set-up,,QWPNCKR,password,,3595565
+117,01/01/2015,02/01/2018,Laptop,Dell Latitude E5430,Main Office,General Use Set-up,,YNMPEKI,password,,4454850
+118,01/01/2015,02/01/2018,Laptop,Dell Latitude E5530,Main Office,General Use Set-up,Magnification software,KNOFXPW,password,,3243054
+119,01/01/2015,02/01/2018,Laptop,Dell Latitude E5520,Main Office,Broken,,HVTLRSJ,password,battery issue - no battery is detected,2085588
+120,01/01/2015,02/01/2018,Laptop,Dell Latitude E5520,Main Office,Broken,Voice Recognition,SANZLXQ,password,,6877257
+121,01/01/2015,02/01/2018,Laptop,Dell Latitude E5520,Main Office,General Use Set-up,,RFTPWJI,password,,7133097
+122,01/01/2015,02/01/2018,Laptop,Dell Latitude E5520,Main Office,General Use Set-up,,AHZXNUO,password,,8770129
+123,01/01/2015,02/01/2018,Laptop,Dell Latitude E5520,Main Office,General Use Set-up,,SUCOKJA,password,,5674549
+124,01/01/2015,02/01/2018,Laptop,Dell Latitude E5520,Main Office,General Use Set-up,,WIJSPEX,password,,1585198
+125,01/01/2015,02/01/2018,Laptop,Dell Latitude E5520,Main Office,General Use Set-up,,JANTWDV,password,,4164087
+127,01/01/2015,02/01/2018,Laptop,Dell Latitude E5520,Main Office,General Use Set-up,,LGBDRNS,password,,3609533
+128,01/01/2015,02/01/2018,Laptop,Dell Latitude E5520,Main Office,Exam Set-up,,RJIFYVK,password,back-up laptop,1077089
+129,01/01/2015,02/01/2018,Laptop,Dell Latitude E5520,Main Office,Exam Set-up,,ZHFBKRO,password,,6030535
+,,,,,,,,,,,3969232

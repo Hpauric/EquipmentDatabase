@@ -13,7 +13,7 @@ namespace EquipmentDatabase.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201712291027030_initial"; }
+            get { return "201801170953558_initial"; }
         }
         
         string IMigrationMetadata.Source
