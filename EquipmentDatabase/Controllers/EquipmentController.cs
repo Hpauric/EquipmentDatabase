@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Net;
 using System.Web.Mvc;
+using System.Linq;
 
 
 namespace EquipmentDatabase.Controllers
@@ -40,8 +41,15 @@ namespace EquipmentDatabase.Controllers
 
             try
             {
-                var equipments = db.Equipments.Include(e => e.Student);
-                return View(equipments);
+
+                var query = from e in db.Equipments
+                            where e.StudentID == null
+                            select e;
+
+
+
+                //var equipments = db.Equipments.Include(e => e.StudentID == null);
+                return View(query);
 
             }
             catch (DataException dex)

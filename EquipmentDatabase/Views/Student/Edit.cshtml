@@ -48,11 +48,22 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <ul class="list-group">
-                    <li class="list-group-item">Cras justo odio</li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Morbi leo risus</li>
-                    <li class="list-group-item">Porta ac consectetur ac</li>
-                    <li class="list-group-item">Vestibulum at eros</li>
+
+                    @foreach (var item in Model.Equipment)
+                    {
+                        <li class="list-group-item">
+                            <button class="btn">
+                                @Html.DisplayFor(modelItem => item.EquipmentType)
+                            </button>
+                            <button class="btn">
+                                @Html.DisplayFor(modelItem => item.DatePurchased)
+                            </button>
+                            <button class="btn">
+                                @Html.DisplayFor(modelItem => item.DateAssigned)
+                            </button>
+
+                        </li>
+                    }
                 </ul>
             </div>
         </div>
