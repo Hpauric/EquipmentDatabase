@@ -164,6 +164,44 @@ namespace EquipmentDatabase.Controllers
             return RedirectToAction("Index");
         }
 
+        // GET
+        public ActionResult Unassign(int equipmentID, int studentID)
+        {
+            try
+            {
+                Student student = db.Students
+           .Include(i => i.Equipment)
+           .Where(i => i.StudentID == studentID)
+            .Single();
+
+                if (student == null)
+                {
+                    return HttpNotFound();
+                }
+
+                var equipment = db.Equipments
+                    .Where(d => d.StudentID == studentID && d.EquipmentID == equipmentID)
+                    .SingleOrDefault();
+                if (equipment != null)
+                {
+                    equipment.StudentID = null;
+                    student.Equipment.Remove(equipment);
+
+                }
+
+                db.SaveChanges();
+            }
+            catch (DataException/* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                return RedirectToAction("Delete", new { id = studentID, saveChangesError = true });
+            }
+            return View("Edit");
+        }
+
+
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
