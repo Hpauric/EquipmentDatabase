@@ -6,22 +6,29 @@
 
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
 
+@section Scripts {
 <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
-
-
 <script type='text/javascript'>
     $(document).ready(function () {
         $('#table-id').DataTable({
             "initComplete": function (settings, json) {
+                preloaderFadeOutTime = 500;
+                function hidePreloader() {
+                    var preloader = $('.spinner-wrapper');
+                    preloader.fadeOut(preloaderFadeOutTime);
+                }
+                hidePreloader();
                 $('#table-id').show();
+
             },
             "pageLength": 50
         });
     });
 </script>
-
+    }
 
 <h2>Student Index</h2>
+
 
 <p>
     @Html.ActionLink("Create New", "Create")

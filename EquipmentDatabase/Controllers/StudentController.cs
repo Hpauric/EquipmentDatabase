@@ -185,18 +185,21 @@ namespace EquipmentDatabase.Controllers
                 if (equipment != null)
                 {
                     equipment.StudentID = null;
+                    equipment.DateAssigned = null;
                     student.Equipment.Remove(equipment);
 
                 }
 
                 db.SaveChanges();
+
+                return View("Edit", student);
             }
             catch (DataException/* dex */)
             {
                 //Log the error (uncomment dex variable name and add a line here to write a log.
                 return RedirectToAction("Delete", new { id = studentID, saveChangesError = true });
             }
-            return View("Edit");
+            
         }
 
 

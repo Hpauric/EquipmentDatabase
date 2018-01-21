@@ -48,14 +48,14 @@
                             <th scope="col">Model</th>
                             <th scope="col">Date Purchased</th>
                             <th scope="col">Date Assigned</th>
-                            <th scope="col"></th>
+                            
                         </tr>
                     </thead>
                     <tbody>
-                        @if (Model.Equipment != null)
+                        @if (Model.Equipment.Any<EquipmentDatabase.Models.Equipment>())
                         {
 
-                            @foreach (var item in Model.Equipment)
+                            foreach (var item in Model.Equipment)
                             {
                                 <tr>
                                     <th scope="row">@Html.DisplayFor(modelItem => item.EquipmentID)</th>
@@ -65,11 +65,11 @@
                                     <th scope="row">@Html.DisplayFor(modelItem => item.DateAssigned)</th>
                                     <th scope="row">
                                         @Html.ActionLink("Edit", "Edit", "Equipment", new { id = item.EquipmentID },
-             htmlAttributes: new { @class = "btn btn-primary" })
+                                        htmlAttributes: new { @class = "btn btn-primary" })
                                     </th>
                                     <th scope="row">
                                         @Html.ActionLink("Unassign", "Unassign", new { equipmentID = item.EquipmentID, studentID = item.StudentID },
-         htmlAttributes: new { @class = "btn btn-primary" })
+                                        htmlAttributes: new { @class = "btn btn-primary" })
                                     </th>
 
                                 </tr>
