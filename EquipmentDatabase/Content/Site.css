@@ -29,12 +29,12 @@ textarea {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ff6347;
+    //background-color: #ff6347;
     z-index: 999999;
 }
 
 .spinner {
-    position: absolute;
+    //position: absolute;
     top: 48%;
     left: 48%;
     width: 140px;

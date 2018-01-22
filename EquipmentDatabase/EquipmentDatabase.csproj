@@ -251,6 +251,8 @@
     <Content Include="Views\Equipment\AjaxTest.cshtml" />
     <Content Include="Views\Home\AjaxTest.cshtml" />
     <Content Include="Views\Equipment\AjaxListTest.cshtml" />
+    <Content Include="Views\Student\AjaxIndex.cshtml" />
+    <Content Include="Views\Student\AjaxStudentTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

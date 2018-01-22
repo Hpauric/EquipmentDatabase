@@ -24,6 +24,16 @@ namespace EquipmentDatabase.Controllers
             return View(db.Students.ToList());
         }
 
+        public ActionResult AjaxIndex()
+        {
+            return View();
+        }
+
+        public ActionResult AjaxStudentTable()
+        {
+            return PartialView(db.Students.ToList());
+        }
+
         // GET: Student/Details/5
         public ActionResult Details(int? id)
         {

@@ -22,7 +22,26 @@ namespace EquipmentDatabase.Controllers
 
         public ActionResult AjaxListTest()
         {
-            return PartialView();
+            try
+            {
+                var equipments = db.Equipments.Include(e => e.Student);
+                return PartialView("Index", equipments);
+
+            }
+            catch (DataException dex)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
+                System.Diagnostics.Trace.TraceError(dex.Message);
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                return View("Error");
+                // return dex.Message;
+            }
+
+
+
+
+            
 
         }
 
@@ -216,7 +235,7 @@ namespace EquipmentDatabase.Controllers
             try
             {
                 var equipments = db.Equipments.Include(e => e.Student);
-                return View(equipments);
+                return PartialView(equipments);
 
             }
             catch (DataException dex)

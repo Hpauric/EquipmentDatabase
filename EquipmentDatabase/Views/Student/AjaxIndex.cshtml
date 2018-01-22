@@ -1,0 +1,71 @@
+﻿
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+
+@section Scripts {
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+<script type='text/javascript'>
+
+    function myFunction() {
+        $('#table-id').DataTable({
+            "initComplete": function (settings, json) {
+                preloaderFadeOutTime = 500;
+                function hidePreloader() {
+                    var preloader = $('.spinner-wrapper');
+                    preloader.fadeOut(preloaderFadeOutTime);
+                }
+                hidePreloader();
+                $('#table-id').show();
+
+            },
+            "pageLength": 50
+        });
+    }
+
+    $(document).ready(function () {
+
+        //$(".btn-primary").click();
+
+
+        $(".btn-primary").click(function () {
+            $(".spinner-wrapper").show();
+        })
+    });
+</script>
+    }
+
+<h2>Student Index</h2>
+<p>
+@Html.ActionLink("Create New", "Create")
+</p>
+
+<div>
+
+    @Ajax.ActionLink("Test Ajax",
+ "AjaxStudentTable",
+ null,
+ new AjaxOptions
+ {
+     UpdateTargetId = "table-id",
+     InsertionMode = InsertionMode.Replace,
+     HttpMethod = "GET",
+     OnSuccess = "myFunction",
+
+ },
+ new { @class = "btn btn-primary" })
+</div>
+
+@{Html.RenderAction("AjaxStudentTable");
+}
+
+
+<div class="spinner-wrapper" hidden>
+    <div class="spinner">
+        <div class="dot1"></div>
+        <div class="dot2"></div>
+    </div>
+</div>
+
+
+<table class="display" id="table-id">
+
+</table>
