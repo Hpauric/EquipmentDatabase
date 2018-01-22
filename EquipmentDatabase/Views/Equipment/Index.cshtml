@@ -18,8 +18,18 @@
 
 <script type='text/javascript'>
     $(document).ready(function () {
+        
+            
+        
         $('#table-id').DataTable({
             "initComplete": function (settings, json) {
+
+                preloaderFadeOutTime = 500;
+                function hidePreloader() {
+                    var preloader = $('.spinner-wrapper');
+                    preloader.fadeOut(preloaderFadeOutTime);
+                }
+                hidePreloader();
                 $('#table-id').show();
             },
             "pageLength": 50,
@@ -50,6 +60,15 @@
         });
     });
 </script>
+
+<div class="spinner-wrapper">
+    <div class="spinner">
+        <div class="dot1"></div>
+        <div class="dot2"></div>
+    </div>
+</div>
+
+
 
 <h2>Equipment List</h2>
 

@@ -5,7 +5,7 @@ using System.Data.Entity;
 using System.Net;
 using System.Web.Mvc;
 using System.Linq;
-
+using System;
 
 namespace EquipmentDatabase.Controllers
 {
@@ -13,69 +13,57 @@ namespace EquipmentDatabase.Controllers
     {
         private ProjectContext db = new ProjectContext();
 
-        // GET: Equipment
-        public ActionResult Index()
-        {
-            try
-            {
-                var equipments = db.Equipments.Include(e => e.Student);
-             
-                return View(equipments);
 
-            }
-            catch (DataException dex)
-            {
-                //Log the error (uncomment dex variable name and add a line here to write a log.
-                System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
-                System.Diagnostics.Trace.TraceError(dex.Message);
-                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
-                return View("Error");
-                // return dex.Message;
-            }
+        public ActionResult AjaxTest()
+        {
+            return PartialView();
+
         }
 
-        // GET: Equipment
-        public ActionResult Select(int? StudentID)
+        public ActionResult AjaxListTest()
         {
-            ViewBag.StudentID = StudentID;
+            return PartialView();
+
+        }
+
+
+        // GET: Equipment/BulkCreate
+        public ActionResult BulkCreate()
+        {
+            return View();
+        }
+
+        // POST: Equipment/BulkCreate
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult BulkCreate(Equipment equipment, int NumberOfUnits)
+        {
+
+            System.Diagnostics.Debug.WriteLine("Number of Units: " + NumberOfUnits);
+            System.Diagnostics.Debug.WriteLine(equipment);
+
+            //var nextEquipmentID = db.Equipment.SqlQuery("SELECT MAX(ID) FROM ;
 
             try
             {
+                if (ModelState.IsValid)
+                {
+                    for (var i = 0; i < NumberOfUnits; i++)
+                    {
+                        db.Equipments.Add(equipment);
+                        db.SaveChanges();
+                    }
 
-                var query = from e in db.Equipments
-                            where e.StudentID == null
-                            select e;
-
-
-
-                //var equipments = db.Equipments.Include(e => e.StudentID == null);
-                return View(query);
-
+                    return RedirectToAction("Index");
+                }
             }
-            catch (DataException dex)
+            catch (DataException /* dex */)
             {
                 //Log the error (uncomment dex variable name and add a line here to write a log.
-                System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
-                System.Diagnostics.Trace.TraceError(dex.Message);
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
-                return View("Error");
-                // return dex.Message;
             }
-        }
 
-        // GET: Equipment/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Equipment equipment = db.Equipments.Find(id);
-            if (equipment == null)
-            {
-                return HttpNotFound();
-            }
-            return View(equipment);
+            return View();
         }
 
         // GET: Equipment/Create
@@ -110,59 +98,72 @@ namespace EquipmentDatabase.Controllers
             }
             catch (DataException dex)
             {
-              
+
                 System.Diagnostics.Debug.WriteLine(dex.ToString());
                 //ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
                 ModelState.AddModelError("", dex.ToString() + dex.Message + dex.Source + dex.TargetSite + dex.HelpLink + dex.InnerException);
 
                 return View(equipment);
             }
-            
+
         }
 
-        // GET: Equipment/BulkCreate
-        public ActionResult BulkCreate()
+
+        // GET: Equipment/Delete/5
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Equipment equipment = db.Equipments.Find(id);
+            if (equipment == null)
+            {
+                return HttpNotFound();
+            }
+            return View(equipment);
         }
 
-        // POST: Equipment/BulkCreate
-        [HttpPost]
+        // POST: Equipment/Delete/5
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult BulkCreate(Equipment equipment, int NumberOfUnits)
+        public ActionResult DeleteConfirmed(int id)
         {
-
-            System.Diagnostics.Debug.WriteLine("Number of Units: " + NumberOfUnits);
-            System.Diagnostics.Debug.WriteLine(equipment);
-
-            //var nextEquipmentID = db.Equipment.SqlQuery("SELECT MAX(ID) FROM ;
-            
-            try
+            Equipment equipment = db.Equipments.Find(id);
+            db.Equipments.Remove(equipment);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+       
+        // GET: Equipment/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
             {
-                if (ModelState.IsValid)
-                {
-                   for (var i = 0; i < NumberOfUnits; i++)
-                    {
-                        db.Equipments.Add(equipment);
-                        db.SaveChanges();
-                    }
-                   
-                    return RedirectToAction("Index");
-                }
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            catch (DataException /* dex */)
+            Equipment equipment = db.Equipments.Find(id);
+            if (equipment == null)
             {
-                //Log the error (uncomment dex variable name and add a line here to write a log.
-                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                return HttpNotFound();
             }
+            return View(equipment);
+        }
 
-            return View();
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
 
 
 
 
 
+        
         // GET: Equipment/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -197,37 +198,6 @@ namespace EquipmentDatabase.Controllers
                 }
                 catch (DataException dex)
                 {
-                    
-                    ModelState.AddModelError("", dex.ToString() + '\n' +
-                        dex.Message + '\n' + dex.Source + '\n' + 
-                        dex.TargetSite + '\n' + dex.HelpLink + '\n' + 
-                        dex.InnerException);
-                }
-            }
-            ViewBag.StudentID = new SelectList(db.Students, "StudentID", "LastName", equipment.StudentID);
-            return View(equipment);
-        }
-
-        public ActionResult Save(int ID, int StudentID)
-        {
-
-            Equipment equipment = db.Equipments.Find(ID);
-
-            if (StudentID > 10)
-            {
-                try
-                {
-                    equipment.StudentID = StudentID;
-                    db.Entry(equipment).State = EntityState.Modified;
-                    db.SaveChanges();
-
-                    //return RedirectToRoute()
-                    return RedirectToAction("Details", "Student", new { id = StudentID });
-                    //return View("Details", "Student");
-                    //return RedirectToAction("Index");
-                }
-                catch (DataException dex)
-                {
 
                     ModelState.AddModelError("", dex.ToString() + '\n' +
                         dex.Message + '\n' + dex.Source + '\n' +
@@ -235,44 +205,88 @@ namespace EquipmentDatabase.Controllers
                         dex.InnerException);
                 }
             }
-            
+            ViewBag.StudentID = new SelectList(db.Students, "StudentID", "LastName", equipment.StudentID);
+            return View(equipment);
+        }
+
+
+        // GET: Equipment
+        public ActionResult Index()
+        {
+            try
+            {
+                var equipments = db.Equipments.Include(e => e.Student);
+                return View(equipments);
+
+            }
+            catch (DataException dex)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
+                System.Diagnostics.Trace.TraceError(dex.Message);
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                return View("Error");
+                // return dex.Message;
+            }
+        }
+
+        public ActionResult Save(int ID, int StudentID)
+        {
+
+            Equipment equipment = db.Equipments.Find(ID);
+            try
+            {
+                equipment.StudentID = StudentID;
+                equipment.DateAssigned = DateTime.Today;
+                equipment.Location = "With Student";
+                db.Entry(equipment).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Edit", "Student", new { id = StudentID });
+            }
+            catch (DataException dex)
+            {
+
+                ModelState.AddModelError("", dex.ToString() + '\n' +
+                    dex.Message + '\n' + dex.Source + '\n' +
+                    dex.TargetSite + '\n' + dex.HelpLink + '\n' +
+                    dex.InnerException);
+            }
+
             return View("Error");
         }
 
 
-        // GET: Equipment/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: Select
+        public ActionResult Select(int? StudentID)
         {
-            if (id == null)
+            ViewBag.StudentID = StudentID;
+
+            try
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+                var query = from e in db.Equipments
+                            where e.StudentID == null
+                            select e;
+
+
+
+                //var equipments = db.Equipments.Include(e => e.StudentID == null);
+                return View(query);
+
             }
-            Equipment equipment = db.Equipments.Find(id);
-            if (equipment == null)
+            catch (DataException dex)
             {
-                return HttpNotFound();
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
+                System.Diagnostics.Trace.TraceError(dex.Message);
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                return View("Error");
+                // return dex.Message;
             }
-            return View(equipment);
         }
 
-        // POST: Equipment/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Equipment equipment = db.Equipments.Find(id);
-            db.Equipments.Remove(equipment);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+
     }
 }
