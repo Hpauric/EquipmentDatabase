@@ -12,6 +12,7 @@
                 function hidePreloader() {
                     var preloader = $('.spinner-wrapper');
                     preloader.fadeOut(preloaderFadeOutTime);
+                    $('#panel-wrapper').hide();
                 }
                 hidePreloader();
                 $('#table-id').show();
@@ -21,47 +22,61 @@
         });
     }
 
+    //$(document).ready(function () {
+
+    //    //$(".btn-primary").click();
+
+
+    //    $(".btn-primary").click(function () {
+    //        $(".spinner-wrapper").show();
+    //    })
+    //});
     $(document).ready(function () {
-
-        //$(".btn-primary").click();
-
-
-        $(".btn-primary").click(function () {
-            $(".spinner-wrapper").show();
-        })
+        $("#create-new").hide();
     });
+
+    $.ajax({
+        url: '/student/ajaxstudenttable',
+        success: function success(data) {
+            console.log(data);
+            $("#table-id").html(data);
+            myFunction();
+            $("#create-new").show();
+
+        },
+        cache: false,
+        error: function error(jqXHR, errorMessage, errorThrown) {
+            console.log(errorMessage);
+        }
+    });
+
+
 </script>
     }
+ 
 
 <h2>Student Index</h2>
 <p>
-@Html.ActionLink("Create New", "Create")
+@Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary", id="create-new" })
 </p>
 
-<div>
-
-    @Ajax.ActionLink("Test Ajax",
- "AjaxStudentTable",
- null,
- new AjaxOptions
- {
-     UpdateTargetId = "table-id",
-     InsertionMode = InsertionMode.Replace,
-     HttpMethod = "GET",
-     OnSuccess = "myFunction",
-
- },
- new { @class = "btn btn-primary" })
+<div class="panel panel-default" id="panel-wrapper">
+    <div class="panel-body">
+        Loading data...
+    </div>
 </div>
 
-@{Html.RenderAction("AjaxStudentTable");
-}
-
-
-<div class="spinner-wrapper" hidden>
-    <div class="spinner">
-        <div class="dot1"></div>
-        <div class="dot2"></div>
+<div class="spinner-wrapper">
+    <div class="sk-cube-grid">
+        <div class="sk-cube sk-cube1"></div>
+        <div class="sk-cube sk-cube2"></div>
+        <div class="sk-cube sk-cube3"></div>
+        <div class="sk-cube sk-cube4"></div>
+        <div class="sk-cube sk-cube5"></div>
+        <div class="sk-cube sk-cube6"></div>
+        <div class="sk-cube sk-cube7"></div>
+        <div class="sk-cube sk-cube8"></div>
+        <div class="sk-cube sk-cube9"></div>
     </div>
 </div>
 
