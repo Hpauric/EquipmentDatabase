@@ -1,8 +1,10 @@
 ﻿
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css">
 
 @section Scripts {
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
     <script type='text/javascript'>
 
         function myFunction() {
@@ -20,12 +22,26 @@
                     $('#table-id').show();
                 },
                 "pageLength": 50,
+                responsive: {
+                    details: {
+                        type: 'column',
+                        target: '.extend-button'
+                    }
+                },
                 "columns": [
                     null,
                     null,
                     null,
                     null,
                     null,
+                    null,
+                    null,
+                    { "orderable": false },
+                    { "orderable": false },
+                    { "orderable": false },
+                    { "orderable": false },
+                    { "orderable": false },
+                    { "orderable": false },
                     { "orderable": false },
                     { "orderable": false },
                     { "orderable": false }
@@ -33,17 +49,17 @@
             });
         }
         $(document).ready(function () {
-            $("#create-new").hide();
+            $("#add-buttons").hide();
             $("footer").hide();
         });
 
         $.ajax({
-            url: '/student/ajaxstudenttable',
+            url: '/equipment/ajaxequipmenttable',
             success: function success(data) {
                 console.log(data);
                 $("#table-id").html(data);
                 myFunction();
-                $("#create-new").show();
+                $("#add-buttons").show();
 
             },
             cache: false,
@@ -53,9 +69,11 @@
         });
     </script>
 }
-<h2>Student Index</h2>
-<p>
-    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary", id = "create-new" })
+<h2>Equipment Index</h2>
+<p id="add-buttons">
+    @Html.ActionLink("Add Equipment", "Create", "", htmlAttributes: new { @class = "btn btn-primary" })
+    @Html.ActionLink("Add Shipment", "BulkCreate", "", htmlAttributes: new { @class = "btn btn-primary" })
+
 </p>
 
 <div class="panel panel-default" id="panel-wrapper">
@@ -79,4 +97,4 @@
 </div>
 
 
-<table class="display" id="table-id"></table>
+<table id="table-id" class="display nowrap" cellspacing="0" width="100%" hidden></table>

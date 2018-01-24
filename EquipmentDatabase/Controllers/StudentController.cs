@@ -21,12 +21,7 @@ namespace EquipmentDatabase.Controllers
         // GET: Student
         public ActionResult Index()
         {
-            return View(db.Students.ToList());
-        }
-
-        public ActionResult AjaxIndex()
-        {
-            return View();
+            return View("AjaxIndex");
         }
 
         public ActionResult AjaxStudentTable()

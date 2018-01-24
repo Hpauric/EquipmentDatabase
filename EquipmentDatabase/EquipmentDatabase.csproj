@@ -199,8 +199,7 @@
     <EmbeddedResource Include="Migrations\SeedData\STUDENT_MOCK_DATA.csv" />
     <EmbeddedResource Include="Migrations\SeedData\EQUIPMENT_MOCK_DATA.csv" />
     <EmbeddedResource Include="Migrations\SeedData\EQUIPMENT_MOCK_DATA2.csv" />
-    <None Include="Properties\PublishProfiles\equipmenttest - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\myWebAppWithSql2 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\equipment-database - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\datatables.js" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
@@ -248,11 +247,11 @@
     <Content Include="Views\Equipment\Index.cshtml" />
     <Content Include="Views\Equipment\BulkCreate.cshtml" />
     <Content Include="Views\Equipment\Select.cshtml" />
-    <Content Include="Views\Equipment\AjaxTest.cshtml" />
     <Content Include="Views\Home\AjaxTest.cshtml" />
-    <Content Include="Views\Equipment\AjaxListTest.cshtml" />
     <Content Include="Views\Student\AjaxIndex.cshtml" />
     <Content Include="Views\Student\AjaxStudentTable.cshtml" />
+    <Content Include="Views\Equipment\AjaxIndex.cshtml" />
+    <Content Include="Views\Equipment\AjaxEquipmentTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

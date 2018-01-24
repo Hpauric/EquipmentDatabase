@@ -1,7 +1,5 @@
 ﻿@model IEnumerable<EquipmentDatabase.Models.Student>
 
-
-
     <thead>
         <tr>
             <th>
@@ -37,17 +35,7 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.FirstMidName)
-                </td>
-                @*Html.DisplayFor(modelItem => item.Equipment.Skip(1).First().EquipmentType)
-
-                    try
-                    {
-                        Html.DisplayFor(modelItem => item.Equipment.First().EquipmentType);
-                    }
-                    catch { }
-
-
-                *@
+                </td>        
 
                 @{int count = 0;
 
