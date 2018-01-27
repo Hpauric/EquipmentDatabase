@@ -22,6 +22,35 @@ namespace EquipmentDatabase.Migrations
 
         protected override void Seed(EquipmentDatabase.DAL.ProjectContext context)
         {
+
+            //void DeleteAllData(ProjectContext myContext)
+            //{
+            //    var equipmentsToDelete = myContext.Equipments.ToList();
+            //    foreach (Equipment e in equipmentsToDelete)
+            //    {
+            //        context.Equipments.Remove(e);
+            //    }
+            //    var studentsToDelete = myContext.Students.ToList();
+            //    foreach (Student s in studentsToDelete)
+            //    {
+            //        context.Students.Remove(s);
+            //    }
+            //}
+
+            //DeleteAllData(context);
+
+            var equipmentsToDelete = context.Equipments.ToList();
+            foreach (Equipment e in equipmentsToDelete)
+            {
+                context.Equipments.Remove(e);
+            }
+            var studentsToDelete = context.Students.ToList();
+            foreach (Student s in studentsToDelete)
+            {
+                context.Students.Remove(s);
+            }
+            context.SaveChanges();
+
             var students = new List<Student>();
             Assembly assembly = Assembly.GetExecutingAssembly();
             string[] names = assembly.GetManifestResourceNames();
@@ -46,8 +75,6 @@ namespace EquipmentDatabase.Migrations
 
             string resourceName2 = "EquipmentDatabase.Migrations.SeedData.EQUIPMENT_MOCK_DATA2.csv";
 
-            string testString = "hello";
-
             using (Stream stream = assembly.GetManifestResourceStream(resourceName2))
             {
                 using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
@@ -57,10 +84,23 @@ namespace EquipmentDatabase.Migrations
 
                     foreach (TestClass e in equipments2)
                     {
-                       // testString = testString.Insert(0, e.EquipmentType + Environment.NewLine);
-                        equipments.Add(new Equipment
+                        //equipments.Add(new Equipment
+                        //{
+                        //    StudentID = students.Single(s => s.StudentID == e.StudentID).StudentID,
+                        //    DatePurchased = new DateTime(2017, 1, 1),
+                        //    DateAssigned = new DateTime(2017, 1, 1),
+                        //    EquipmentType = e.EquipmentType,
+                        //    ModelName = e.ModelName,
+                        //    Location = e.Location,
+                        //    Status = e.Status,
+                        //    Software = e.Software,
+                        //    ServiceTag = e.ServiceTag,
+                        //    Password = e.Password,
+                        //    Notes = e.Notes
+                        //});
+
+                        Equipment myEquip = new Equipment
                         {
-                            StudentID = students.Single(s => s.StudentID == e.StudentID).StudentID,
                             DatePurchased = new DateTime(2017, 1, 1),
                             DateAssigned = new DateTime(2017, 1, 1),
                             EquipmentType = e.EquipmentType,
@@ -71,16 +111,19 @@ namespace EquipmentDatabase.Migrations
                             ServiceTag = e.ServiceTag,
                             Password = e.Password,
                             Notes = e.Notes
-                        });
+                        };
+
+                        if(e.StudentID != null)
+                        {
+                            myEquip.StudentID = students.Single(s => s.StudentID == e.StudentID).StudentID;
+                        }
+
+                        equipments.Add(myEquip);
 
                     }
-
-                    
-
                     foreach (Equipment e in equipments)
                     {
                         context.Equipments.Add(e);
-                        
                     }
                     
                     //context.Equipments.AddOrUpdate(c => c.StudentID, equipments.ToArray());

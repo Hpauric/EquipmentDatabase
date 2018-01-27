@@ -16,7 +16,7 @@ namespace EquipmentDatabase.Models
         public string ServiceTag { get; set; }
         public string Password { get; set; }
         public string Notes { get; set; }
-        public int StudentID { get; set; }
+        public int? StudentID { get; set; }
 
 
     }

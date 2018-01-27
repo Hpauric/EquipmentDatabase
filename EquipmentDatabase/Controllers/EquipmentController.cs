@@ -70,7 +70,7 @@ namespace EquipmentDatabase.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EquipmentID, DatePurchased, DateAssigned, EquipmentType, StudentID")] Equipment equipment)
+        public ActionResult Create([Bind(Include = "EquipmentID,DatePurchased,DateAssigned,EquipmentType,StudentID,ModelName,Location,Status,ServiceTag,Software,Notes")] Equipment equipment)
         {
 
             try
@@ -232,7 +232,7 @@ namespace EquipmentDatabase.Controllers
                 equipment.Location = "With Student";
                 db.Entry(equipment).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Edit", "Student", new { id = StudentID });
+                return RedirectToAction("Details", "Student", new { id = StudentID });
             }
             catch (DataException dex)
             {
