@@ -6,18 +6,19 @@
     <script type='text/javascript'>
 
         function myFunction() {
-            $('#table-id').DataTable({
+            $("#table-id").DataTable({
                 "initComplete": function (settings, json) {
                     preloaderFadeOutTime = 500;
                     function hidePreloader() {
-                        var preloader = $('.spinner-wrapper');
-                        preloader.fadeOut(preloaderFadeOutTime);
-                        
+                        var preloader = $(".spinner-wrapper");
+                        preloader.fadeOut(preloaderFadeOutTime);     
                     }
                     hidePreloader();
+                    $("#panel-wrapper").hide();
+                    $("#details-panel").show();
+                    $("#assign-panel").show();
+                    $("#table-id").show();
                     $("footer").show();
-                    $('#panel-wrapper').hide();
-                    $('#table-id').show();
                 },
                 "pageLength": 50,
                 "columns": [
@@ -26,14 +27,17 @@
                     null,
                     null,
                     null,
-                    { "orderable": false },
-                    { "orderable": false }
+                    {
+                        "orderable": false,
+                        className: "options-class"}
                 ]
             });
         }
         $(document).ready(function () {
             $("#create-new").hide();
             $("footer").hide();
+            $("#details-panel").hide();
+            $("#assign-panel").hide();
         });
 
         $.ajax({
@@ -53,8 +57,21 @@
     </script>
 }
 <h2>Student Index</h2>
+
+<div class="panel panel-default" id="details-panel">
+    <div class="panel-body">
+        Click <span class="btn btn-primary btn-xs">Details</span> to view more information on equipment assigned to a student.
+    </div>
+</div>
+<div class="panel panel-default" id="assign-panel">
+    <div class="panel-body">
+        Click <span class="btn btn-primary btn-xs">Assign</span> to assign equipment to a student.
+    </div>
+</div>
+
+
 <p>
-    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary", id = "create-new" })
+    @Html.ActionLink("Add New Student", "Create", null, new { @class = "btn btn-primary", id = "create-new" })
 </p>
 
 <div class="panel panel-default" id="panel-wrapper">

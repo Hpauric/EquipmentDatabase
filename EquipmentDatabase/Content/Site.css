@@ -148,6 +148,11 @@ img {
     left: 150px;
 }
 
+.options-class {
+    display: flex;
+    justify-content: space-around;
+}
+
 @media only screen and (max-width: 1000px) {
     img {
         display: none;

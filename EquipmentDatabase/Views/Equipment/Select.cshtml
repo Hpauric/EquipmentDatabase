@@ -4,41 +4,43 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css">
 
+@section Scripts {
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
+<script type='text/javascript'>
+    $(document).ready(function () {
+        $("#table").dataTable();
+    });
+    </script>
+    }
 
+<h2>Select Equipment</h2>
 
-
-<table class="table">
+<table class="table" id="table">
     <tr>
         <th>
             ID
         </th>
         <th>
-
-            @* @Html.DisplayNameFor(model => model.EquipmentType) *@
-
             Equipment Type
-
         </th>
         <th>
-            Student ID
+            Model
         </th>
         <th>
-            First Name
-        </th>
-        <th>
-            Last Name
-        </th>
-        <th>
-            @* @Html.DisplayNameFor(model => model.DateAssigned) *@
             Date Purchased
-
         </th>
         <th>
-            @* @Html.DisplayNameFor(model => model.DateAssigned) *@
-            Date Assigned
-
+            Status
+        </th>
+        <th>
+            Service Tag
+        </th>
+        <th>
+            Notes
         </th>
 
         <th></th>
@@ -56,34 +58,23 @@
 
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Student.StudentID)
+                @Html.DisplayFor(modelItem => item.ModelName)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Student.FirstMidName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Student.LastName)
-            </td>
-
             <td>
                 @item.DatePurchased.ToString("MM/dd/yyyy")
             </td>
-
             <td>
-
-                @if (item.DateAssigned.HasValue)
-                {
-                    @item.DateAssigned.Value.ToString("MM/dd/yyyy")
-                }
+                @Html.DisplayFor(modelItem => item.Status)
             </td>
-
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceTag)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notes)
+            </td>
             <td>
                 @Html.ActionLink("Select", "Save", new { id = item.EquipmentID, StudentID = @ViewBag.StudentID }, htmlAttributes: new { @class = "btn btn-primary" })
-                @*@Html.ActionLink("Select", "Edit", new { id = item.EquipmentID }, htmlAttributes: new { @class = "btn btn-primary" })
-                @Html.ActionLink("Select 2", "Save", new RouteValueDictionary(new { id = item.EquipmentID, studentID = @ViewBag.StudentID }), htmlAttributes: new { @class = "btn btn-primary" })*@
-                
             </td>
         </tr>
     }
-
 </table>

@@ -16,8 +16,7 @@
             </th>
             <th>Additional Equipment</th>
 
-            <th></th>
-            <th></th>
+            <th>Options</th>
 
         </tr>
     </thead>
@@ -61,8 +60,7 @@
                 }
                 <td>
                     @Html.ActionLink("Details", "Details", new { id = item.StudentID }, htmlAttributes: new { @class = "btn btn-primary" })
-                </td>
-                <td>
+                    @Html.ActionLink("Assign", "Select", "Equipment", new { StudentID = @item.StudentID }, htmlAttributes: new { @class = "btn btn-primary" })
                     @Html.ActionLink("Delete", "Delete", new { id = item.StudentID }, htmlAttributes: new { @class = "btn btn-primary" })
                 </td>
                
