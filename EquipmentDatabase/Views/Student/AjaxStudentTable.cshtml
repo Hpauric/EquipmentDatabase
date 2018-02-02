@@ -1,71 +1,61 @@
 ﻿@model IEnumerable<EquipmentDatabase.Models.Student>
 
-    <thead>
+<thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstMidName)
+        </th>
+        <th>Equipment</th>
+        <th>Options</th>
+    </tr>
+</thead>
+<tbody>
+
+    @foreach (var item in Model)
+    {
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.StudentID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstMidName)
-            </th>
-            <th>
-                Equipment
-            </th>
-            <th>Additional Equipment</th>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstMidName)
+            </td>
+            <td>
 
-            <th>Options</th>
-
-        </tr>
-    </thead>
-    <tbody>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.StudentID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LastName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FirstMidName)
-                </td>        
-
-                @{int count = 0;
+                @{bool commaFlag = false;
 
                     foreach (var equipmentItem in item.Equipment)
                     {
-                        count++;
-
-                        if (count <= 2)
+                        @Html.DisplayFor(modelItem => equipmentItem.EquipmentType)
+                        if (commaFlag)
                         {
-                            <td>
-                                @Html.DisplayFor(modelItem => equipmentItem.EquipmentType)
-                            </td>
+                            <span>, </span>
+                        }
+                        else
+                        {
+                            commaFlag = true;
                         }
                     }
-                    if (count == 0)
-                    {
-                        <td></td>
-                        <td></td>
-                    }
-                    else if (count == 1)
-                    {
-                        <td></td>
-                    }
+
                 }
-                <td>
-                    @Html.ActionLink("Details", "Details", new { id = item.StudentID }, htmlAttributes: new { @class = "btn btn-primary" })
-                    @Html.ActionLink("Assign", "Select", "Equipment", new { StudentID = @item.StudentID }, htmlAttributes: new { @class = "btn btn-primary" })
-                    @Html.ActionLink("Delete", "Delete", new { id = item.StudentID }, htmlAttributes: new { @class = "btn btn-primary" })
-                </td>
-               
-            </tr>
+
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.StudentID }, htmlAttributes: new { @class = "btn btn-primary" })
+                @Html.ActionLink("Assign", "Select", "Equipment", new { StudentID = @item.StudentID }, htmlAttributes: new { @class = "btn btn-primary" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.StudentID }, htmlAttributes: new { @class = "btn btn-primary" })
+            </td>
+
+        </tr>
                     }
 
-    </tbody>
-
+</tbody>

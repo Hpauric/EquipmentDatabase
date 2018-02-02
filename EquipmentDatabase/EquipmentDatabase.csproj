@@ -185,6 +185,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\notebook-1361981_960_720.jpg" />
+    <Content Include="Content\Images\pauric-350.png" />
     <Content Include="Content\Images\pauric-470.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -201,7 +202,9 @@
     <EmbeddedResource Include="Migrations\SeedData\STUDENT_MOCK_DATA.csv" />
     <EmbeddedResource Include="Migrations\SeedData\EQUIPMENT_MOCK_DATA.csv" />
     <EmbeddedResource Include="Migrations\SeedData\EQUIPMENT_MOCK_DATA2.csv" />
+    <None Include="Properties\PublishProfiles\equip-site - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\equipment-database - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\test-web-app-created-from-visual-studio - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\datatables.js" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
