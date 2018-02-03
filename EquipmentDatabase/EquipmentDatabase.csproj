@@ -193,6 +193,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <EmbeddedResource Include="Migrations\201801170953558_initial.resx">
       <DependentUpon>201801170953558_initial.cs</DependentUpon>
@@ -200,6 +201,7 @@
     <EmbeddedResource Include="Migrations\SeedData\STUDENT_MOCK_DATA.csv" />
     <EmbeddedResource Include="Migrations\SeedData\EQUIPMENT_MOCK_DATA.csv" />
     <EmbeddedResource Include="Migrations\SeedData\EQUIPMENT_MOCK_DATA2.csv" />
+    <None Include="Properties\PublishProfiles\equip-site - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\equipment-database - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\datatables.js" />
