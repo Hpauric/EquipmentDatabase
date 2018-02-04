@@ -85,9 +85,11 @@ namespace EquipmentDatabase.Controllers
                             TransactionType = TransactionType.Assigned
                         };
                         db.Transactions.Add(transaction);
+                        db.SaveChanges();
                     }
-                   
-                    
+
+
+
                     return RedirectToAction("Index");
                 }
                 else
@@ -134,7 +136,7 @@ namespace EquipmentDatabase.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-       
+
         // GET: Equipment/Details/5
         public ActionResult Details(int? id)
         {
@@ -163,7 +165,7 @@ namespace EquipmentDatabase.Controllers
 
 
 
-        
+
         // GET: Equipment/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -284,7 +286,7 @@ namespace EquipmentDatabase.Controllers
             }
         }
 
-        
+
 
 
     }
