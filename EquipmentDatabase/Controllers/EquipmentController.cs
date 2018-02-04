@@ -30,12 +30,8 @@ namespace EquipmentDatabase.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult BulkCreate(Equipment equipment, int NumberOfUnits)
         {
-
             System.Diagnostics.Debug.WriteLine("Number of Units: " + NumberOfUnits);
             System.Diagnostics.Debug.WriteLine(equipment);
-
-            //var nextEquipmentID = db.Equipment.SqlQuery("SELECT MAX(ID) FROM ;
-
             try
             {
                 if (ModelState.IsValid)
@@ -45,7 +41,6 @@ namespace EquipmentDatabase.Controllers
                         db.Equipments.Add(equipment);
                         db.SaveChanges();
                     }
-
                     return RedirectToAction("Index");
                 }
             }
@@ -70,7 +65,7 @@ namespace EquipmentDatabase.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EquipmentID,DatePurchased,DateAssigned,EquipmentType,StudentID,ModelName,Location,Status,ServiceTag,Software,Notes")] Equipment equipment)
+        public ActionResult Create([Bind(Include = "DatePurchased,DateAssigned,EquipmentType,StudentID,ModelName,Location,Status,ServiceTag,Software,Notes")] Equipment equipment)
         {
 
             try
@@ -79,11 +74,24 @@ namespace EquipmentDatabase.Controllers
                 {
                     db.Equipments.Add(equipment);
                     db.SaveChanges();
+
+                    if (equipment.StudentID != null)
+                    {
+                        var transaction = new Transaction
+                        {
+                            StudentID = equipment.StudentID,
+                            EquipmentID = equipment.EquipmentID,
+                            TransactionDate = DateTime.Today,
+                            TransactionType = TransactionType.Assigned
+                        };
+                        db.Transactions.Add(transaction);
+                    }
+                   
+                    
                     return RedirectToAction("Index");
                 }
                 else
                 {
-                    ViewBag.StudentID = new SelectList(db.Students, "StudentID", "LastName", equipment.StudentID);
                     return View(equipment);
                 }
 
@@ -92,7 +100,7 @@ namespace EquipmentDatabase.Controllers
             {
 
                 System.Diagnostics.Debug.WriteLine(dex.ToString());
-                //ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
                 ModelState.AddModelError("", dex.ToString() + dex.Message + dex.Source + dex.TargetSite + dex.HelpLink + dex.InnerException);
 
                 return View(equipment);

@@ -14,5 +14,6 @@ namespace EquipmentDatabase.Models
         public string FirstMidName { get; set; }
 
         public virtual ICollection<Equipment> Equipment { get; set; }
+        public virtual ICollection<Transaction> Transaction { get; set; }
     }
 }

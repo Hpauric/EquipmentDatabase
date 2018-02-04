@@ -123,15 +123,13 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 <script>
-    document.getElementById('StudentID').selectedIndex = -1;
-
     $('#student-assigned').change(function () {
         if ($(this).is(':checked')) {
             $('#student-selector').show();
         }
         else {
             $('#student-selector').hide();
-            document.getElementById('StudentID').selectedIndex = -1;
+            $('input#StudentID').val("");
         }
     });
 </script>

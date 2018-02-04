@@ -18,7 +18,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.StudentID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.StudentID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.StudentID, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                 @Html.ValidationMessageFor(model => model.StudentID, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -26,7 +26,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.FirstMidName, "First Name", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.FirstMidName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.FirstMidName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                 @Html.ValidationMessageFor(model => model.FirstMidName, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -34,14 +34,15 @@
         <div class="form-group">
             @Html.LabelFor(model => model.LastName,"Last Name", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                 @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+            <div class="col-md-offset-2 col-md-10" id="save-button-container">
+                @*<input type="submit" value="Save" class="btn btn-default" />*@
+                <input type="button" value="Edit" id="edit-student-details" class="btn btn-default" />
             </div>
         </div>
         <div class="form-group">
@@ -101,6 +102,41 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+
+<script>
+
+    $(document).ready(function () {
+        if ($('input#StudentID').val() !== "") {
+            $('#student-selector').show();
+            $('#student-assigned').prop('checked', true);
+        }
+
+        var saveButton = `<input type="submit" type="submit"
+value="Save" class="btn btn-default" />`;
+
+        $('#edit-student-details').click(function () {
+
+            if ($(this).prop("type") === "button") {
+                $("#FirstMidName").prop("readonly", false);
+                $("#LastName").prop("readonly", false);
+                $(this).remove();
+                $("#save-button-container").append(saveButton);
+            }
+        });
+
+    });
+
+    $('#student-assigned').change(function () {
+        if ($(this).is(':checked')) {
+            $('#student-selector').show();
+        }
+        else {
+            $('#student-selector').hide();
+        }
+    });
+</script>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

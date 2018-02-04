@@ -13,6 +13,7 @@ namespace EquipmentDatabase.DAL
 
         public DbSet<Student> Students { get; set; }
         public DbSet<Equipment> Equipments { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -24,22 +25,14 @@ namespace EquipmentDatabase.DAL
             //    .HasForeignKey(s => s.StudentID)
             //    .WillCascadeOnDelete();
 
-
-
             //modelBuilder.Entity<Student>()
             //.HasOptional<Standard>(s => s.Standard)
             //.WithMany()
             //.WillCascadeOnDelete(false);
 
-
             //modelBuilder.Entity<Equipment>()
             //    .HasKey(o => o.StudentID).
             //    .WillCascadeOnDelete(true);
-
-
-
-            //.HasForeignKey(o => o.StudentID)
-            //.WillCascadeOnDelete(true);
 
         }
     }

@@ -25,8 +25,8 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <ApplicationInsightsResourceId>/subscriptions/098c5fcc-0ff3-4d3b-a46b-59ca16db0bb9/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/EquipmentDatabase</ApplicationInsightsResourceId>
-    <ApplicationInsightsAnnotationResourceId>/subscriptions/098c5fcc-0ff3-4d3b-a46b-59ca16db0bb9/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/EquipmentDatabase</ApplicationInsightsAnnotationResourceId>
+    <ApplicationInsightsResourceId>/subscriptions/3e086eb4-2488-4ad9-bd9f-641fb4f6e445/resourcegroups/equip-site/providers/microsoft.insights/components/equip-site</ApplicationInsightsResourceId>
+    <ApplicationInsightsAnnotationResourceId>/subscriptions/3e086eb4-2488-4ad9-bd9f-641fb4f6e445/resourceGroups/equip-site/providers/microsoft.insights/components/equip-site</ApplicationInsightsAnnotationResourceId>
     <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -60,20 +60,20 @@
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.4.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.4.1\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.4.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.4.1\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.4.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AI.Web, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.4.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    <Reference Include="Microsoft.AI.Web, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.4.1\lib\net45\Microsoft.AI.Web.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AI.WindowsServer, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.4.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.4.1\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ApplicationInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.2.4.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
@@ -165,6 +165,7 @@
     <Compile Include="Controllers\EquipmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Controllers\TransactionController.cs" />
     <Compile Include="DAL\ProjectConfiguration.cs" />
     <Compile Include="DAL\ProjectContext.cs" />
     <Compile Include="ErrorHandler\AiHandleErrorAttribute.cs" />
@@ -175,10 +176,27 @@
     <Compile Include="Migrations\201801170953558_initial.Designer.cs">
       <DependentUpon>201801170953558_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802041312365_transactions-added.cs" />
+    <Compile Include="Migrations\201802041312365_transactions-added.Designer.cs">
+      <DependentUpon>201802041312365_transactions-added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802041329270_transaction-additional-fields.cs" />
+    <Compile Include="Migrations\201802041329270_transaction-additional-fields.Designer.cs">
+      <DependentUpon>201802041329270_transaction-additional-fields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802042308138_transaction-added-as-navigation-property.cs" />
+    <Compile Include="Migrations\201802042308138_transaction-added-as-navigation-property.Designer.cs">
+      <DependentUpon>201802042308138_transaction-added-as-navigation-property.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802042314250_transaction-equipmentID-not-nullable.cs" />
+    <Compile Include="Migrations\201802042314250_transaction-equipmentID-not-nullable.Designer.cs">
+      <DependentUpon>201802042314250_transaction-equipmentID-not-nullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\TestClass.cs" />
     <Compile Include="Models\Equipment.cs" />
     <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\Transaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -200,9 +218,22 @@
     <EmbeddedResource Include="Migrations\201801170953558_initial.resx">
       <DependentUpon>201801170953558_initial.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802041312365_transactions-added.resx">
+      <DependentUpon>201802041312365_transactions-added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802041329270_transaction-additional-fields.resx">
+      <DependentUpon>201802041329270_transaction-additional-fields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802042308138_transaction-added-as-navigation-property.resx">
+      <DependentUpon>201802042308138_transaction-added-as-navigation-property.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802042314250_transaction-equipmentID-not-nullable.resx">
+      <DependentUpon>201802042314250_transaction-equipmentID-not-nullable.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\SeedData\STUDENT_MOCK_DATA.csv" />
     <EmbeddedResource Include="Migrations\SeedData\EQUIPMENT_MOCK_DATA.csv" />
     <EmbeddedResource Include="Migrations\SeedData\EQUIPMENT_MOCK_DATA2.csv" />
+    <Content Include="Connected Services\Application Insights\ConnectedService.json" />
     <None Include="Properties\PublishProfiles\equip-site - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\equipment-database - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\test-web-app-created-from-visual-studio - Web Deploy.pubxml" />
@@ -255,6 +286,11 @@
     <Content Include="Views\Student\AjaxStudentTable.cshtml" />
     <Content Include="Views\Equipment\AjaxIndex.cshtml" />
     <Content Include="Views\Equipment\AjaxEquipmentTable.cshtml" />
+    <Content Include="Views\Transaction\Create.cshtml" />
+    <Content Include="Views\Transaction\Delete.cshtml" />
+    <Content Include="Views\Transaction\Details.cshtml" />
+    <Content Include="Views\Transaction\Edit.cshtml" />
+    <Content Include="Views\Transaction\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

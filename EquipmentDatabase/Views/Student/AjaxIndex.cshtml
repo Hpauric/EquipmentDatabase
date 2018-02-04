@@ -5,7 +5,16 @@
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
     <script type='text/javascript'>
 
-        function myFunction() {
+        function removeWhitespaceInCells() {
+            var cellString;
+            for (i = 0; i < $('.equipment-cell').length; i++) {
+                cellString = $('.equipment-cell:eq(' + i + ')').text();
+                cellString = cellString.replace(/\s*,/g, ",");
+                $('.equipment-cell:eq(' + i + ')').text(cellString);
+            }
+        }
+
+        function showLoadedTable() {
             $("#table-id").DataTable({
                 "initComplete": function (settings, json) {
                     preloaderFadeOutTime = 500;
@@ -17,6 +26,7 @@
                     $("#panel-wrapper").hide();
                     $("#details-panel").show();
                     $("#assign-panel").show();
+                    removeWhitespaceInCells();
                     $("#table-id").show();
                     $("footer").show();
                 },
@@ -44,9 +54,8 @@
             success: function success(data) {
                 console.log(data);
                 $("#table-id").html(data);
-                myFunction();
+                showLoadedTable();
                 $("#create-new").show();
-
             },
             cache: false,
             error: function error(jqXHR, errorMessage, errorThrown) {

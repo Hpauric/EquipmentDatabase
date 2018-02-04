@@ -29,13 +29,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.FirstMidName)
             </td>
-            <td>
-
-                @{bool commaFlag = false;
-
+            <td class="equipment-cell">@{bool commaFlag = false;
                     foreach (var equipmentItem in item.Equipment)
                     {
-                        @Html.DisplayFor(modelItem => equipmentItem.EquipmentType)
                         if (commaFlag)
                         {
                             <span>, </span>
@@ -44,11 +40,8 @@
                         {
                             commaFlag = true;
                         }
-                    }
-
-                }
-
-            </td>
+                        @Html.DisplayFor(modelItem => equipmentItem.EquipmentType);
+                }}</td>
             <td>
                 @Html.ActionLink("Details", "Details", new { id = item.StudentID }, htmlAttributes: new { @class = "btn btn-primary" })
                 @Html.ActionLink("Assign", "Select", "Equipment", new { StudentID = @item.StudentID }, htmlAttributes: new { @class = "btn btn-primary" })

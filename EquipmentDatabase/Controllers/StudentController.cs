@@ -154,12 +154,8 @@ namespace EquipmentDatabase.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(student).State = EntityState.Modified;
-                System.Diagnostics.Debug.WriteLine("****************************************");
-                System.Diagnostics.Debug.WriteLine(student.StudentID.ToString());
-                System.Diagnostics.Debug.WriteLine("****************************************");
-                System.Diagnostics.Debug.WriteLine(EntityState.Modified);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return View("Index");
             }
             return View(student);
         }

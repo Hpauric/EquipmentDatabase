@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EquipmentDatabase.Models
 {
@@ -32,5 +32,6 @@ namespace EquipmentDatabase.Models
         public int? StudentID { get; set; }
 
         public virtual Student Student { get; set; }
+        public virtual ICollection<Transaction> Transaction { get; set; }
     }
 }
