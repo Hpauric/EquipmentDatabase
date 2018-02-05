@@ -9,80 +9,40 @@
 <div>
     <h4>Equipment</h4>
     <hr />
-    <dl class="dl-horizontal">
+    <div class="form-group">
 
-        <dt>
-            Equipment Type
-        </dt>
+        <h3>Equipment</h3>
 
-        <dd>
-            @Html.DisplayFor(model => model.EquipmentType)
-        </dd>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Student ID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Transaction.Any<EquipmentDatabase.Models.Transaction>())
+                {
 
-        <dt>
-            Location
-        </dt>
+                    foreach (var item in Model.Transaction)
+                    {
+                        <tr>
+                            <th scope="row">@Html.DisplayFor(modelItem => item.StudentID)</th>
+                            <th scope="row">@Html.DisplayFor(modelItem => item.Student.FirstMidName)</th>
+                            <th scope="row">@Html.DisplayFor(modelItem => item.Student.LastName)</th>
+                            <th scope="row">@Html.DisplayFor(modelItem => item.TransactionDate)</th>
+                            <th scope="row">@Html.DisplayFor(modelItem => item.TransactionType)</th>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Location)
-        </dd>
-
-        <dt>
-            Student ID
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Student.StudentID)
-        </dd>
-
-        <dt>
-            First Name
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Student.FirstMidName)
-        </dd>
-
-
-        <dt>
-            Last Name
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Student.LastName)
-        </dd>
-
-        <dt>
-            Date Purchased
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateAssigned)
-        </dd>
-
-
-        <dt>
-            Date Assigned
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateAssigned)
-        </dd>
-        <dt>
-            Model
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ModelName)
-        </dd>
-        
-
-
-        
-
-    </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.EquipmentID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

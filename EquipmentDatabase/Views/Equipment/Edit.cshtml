@@ -116,6 +116,41 @@
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
+
+        <div class="form-group">
+
+            <h3>Equipment</h3>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Student ID</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Transaction.Any<EquipmentDatabase.Models.Transaction>())
+                {
+
+                    foreach (var item in Model.Transaction)
+                    {
+                            <tr>
+                                <th scope="row">@Html.DisplayFor(modelItem => item.StudentID)</th>
+                                <th scope="row">@Html.DisplayFor(modelItem => item.Student.FirstMidName)</th>
+                                <th scope="row">@Html.DisplayFor(modelItem => item.Student.LastName)</th>
+                                <th scope="row">@Html.DisplayFor(modelItem => item.TransactionDate)</th>
+                                <th scope="row">@Html.DisplayFor(modelItem => item.TransactionType)</th>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+
+
     </div>
 }
 
