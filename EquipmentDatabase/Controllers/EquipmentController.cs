@@ -15,8 +15,16 @@ namespace EquipmentDatabase.Controllers
 
         public ActionResult AjaxEquipmentTable()
         {
-            var equipments = db.Equipments.Include(e => e.Student);
-            return PartialView(equipments);
+            try
+            {
+                var equipments = db.Equipments.Include(e => e.Student);
+                return PartialView(equipments);
+            }
+            catch(Exception e)
+            {
+              
+                return View("Error");
+            }
         }
 
         // GET: Equipment/BulkCreate

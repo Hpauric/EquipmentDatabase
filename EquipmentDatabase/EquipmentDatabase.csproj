@@ -192,6 +192,10 @@
     <Compile Include="Migrations\201802042314250_transaction-equipmentID-not-nullable.Designer.cs">
       <DependentUpon>201802042314250_transaction-equipmentID-not-nullable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802052107115_transaction-model-updated.cs" />
+    <Compile Include="Migrations\201802052107115_transaction-model-updated.Designer.cs">
+      <DependentUpon>201802052107115_transaction-model-updated.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\TestClass.cs" />
     <Compile Include="Models\Equipment.cs" />
@@ -229,6 +233,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802042314250_transaction-equipmentID-not-nullable.resx">
       <DependentUpon>201802042314250_transaction-equipmentID-not-nullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802052107115_transaction-model-updated.resx">
+      <DependentUpon>201802052107115_transaction-model-updated.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\SeedData\STUDENT_MOCK_DATA.csv" />
     <EmbeddedResource Include="Migrations\SeedData\EQUIPMENT_MOCK_DATA.csv" />
