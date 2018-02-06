@@ -190,6 +190,14 @@ namespace EquipmentDatabase.Controllers
                     equipment.DateAssigned = null;
                     student.Equipment.Remove(equipment);
 
+                    var transaction = new Transaction
+                    {
+                        StudentID = studentID,
+                        EquipmentID = equipmentID,
+                        TransactionDate = DateTime.Today,
+                        TransactionType = TransactionType.Removed
+                    };
+                    db.Transactions.Add(transaction);
                 }
 
                 db.SaveChanges();

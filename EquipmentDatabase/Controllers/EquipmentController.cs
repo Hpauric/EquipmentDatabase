@@ -20,9 +20,9 @@ namespace EquipmentDatabase.Controllers
                 var equipments = db.Equipments.Include(e => e.Student);
                 return PartialView(equipments);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-              
+
                 return View("Error");
             }
         }
@@ -250,6 +250,17 @@ namespace EquipmentDatabase.Controllers
                 equipment.Location = "With Student";
                 db.Entry(equipment).State = EntityState.Modified;
                 db.SaveChanges();
+                var transaction = new Transaction
+                {
+                    StudentID = equipment.StudentID,
+                    EquipmentID = equipment.EquipmentID,
+                    TransactionDate = DateTime.Today,
+                    TransactionType = TransactionType.Assigned
+                };
+                db.Transactions.Add(transaction);
+                db.SaveChanges();
+
+
                 return RedirectToAction("Details", "Student", new { id = StudentID });
             }
             catch (DataException dex)
