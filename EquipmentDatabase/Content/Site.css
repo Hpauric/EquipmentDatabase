@@ -134,8 +134,8 @@ textarea {
 }
 
 img#home-image {
-    margin-top: -190px;
-    clip-path: inset(190px 20px 30px 0px);
+    //margin-top: -190px;
+    //clip-path: inset(190px 20px 30px 0px);
 }
 .jumbotron h1 {
     position: absolute;
