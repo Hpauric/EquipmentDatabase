@@ -101,8 +101,8 @@ namespace EquipmentDatabase.Migrations
 
                         Equipment myEquip = new Equipment
                         {
-                            DatePurchased = new DateTime(2017, 1, 1),
-                            DateAssigned = new DateTime(2017, 1, 1),
+                            DatePurchased = e.DatePurchased,
+                            DateAssigned = e.DateAssigned,
                             EquipmentType = e.EquipmentType,
                             ModelName = e.ModelName,
                             Location = e.Location,
