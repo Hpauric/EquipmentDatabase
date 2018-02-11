@@ -9,7 +9,7 @@ namespace EquipmentDatabase.Models
 
     public enum TransactionType
     {
-        Assigned, Removed, Recycled, NoteAdded
+         Assigned, NoteAdded, Recycled, Removed, Purchased
     }
 
     public class Transaction

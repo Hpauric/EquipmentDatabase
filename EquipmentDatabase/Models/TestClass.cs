@@ -6,7 +6,7 @@ using System.Web;
 
 namespace EquipmentDatabase.Models
 {
-    public class TestClass
+    public class LoadingClass
     {
 
         public string EquipmentType { get; set; }

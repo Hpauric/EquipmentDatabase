@@ -10,8 +10,6 @@ using EquipmentDatabase.DAL;
 using EquipmentDatabase.Models;
 using System.Data.Entity.Infrastructure;
 
-//test
-
 namespace EquipmentDatabase.Controllers
 {
     public class StudentController : Controller

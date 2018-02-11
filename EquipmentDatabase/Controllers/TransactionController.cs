@@ -15,11 +15,18 @@ namespace EquipmentDatabase.Controllers
     {
         private ProjectContext db = new ProjectContext();
 
+        public ActionResult AjaxTransactionTable()
+        {
+            var transactions = db.Transactions.Include(t => t.Equipment).Include(t => t.Student);
+            return PartialView(transactions.ToList());
+        }
+
+
+
         // GET: Transaction
         public ActionResult Index()
         {
-            var transactions = db.Transactions.Include(t => t.Equipment).Include(t => t.Student);
-            return View(transactions.ToList());
+            return View("AjaxIndex");
         }
 
         // GET: Transaction/Details/5

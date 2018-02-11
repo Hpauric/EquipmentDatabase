@@ -22,23 +22,6 @@ namespace EquipmentDatabase.Migrations
 
         protected override void Seed(EquipmentDatabase.DAL.ProjectContext context)
         {
-
-            //void DeleteAllData(ProjectContext myContext)
-            //{
-            //    var equipmentsToDelete = myContext.Equipments.ToList();
-            //    foreach (Equipment e in equipmentsToDelete)
-            //    {
-            //        context.Equipments.Remove(e);
-            //    }
-            //    var studentsToDelete = myContext.Students.ToList();
-            //    foreach (Student s in studentsToDelete)
-            //    {
-            //        context.Students.Remove(s);
-            //    }
-            //}
-
-            //DeleteAllData(context);
-
             var equipmentsToDelete = context.Equipments.ToList();
             foreach (Equipment e in equipmentsToDelete)
             {
@@ -57,7 +40,6 @@ namespace EquipmentDatabase.Migrations
             string fullString = "";
             names.ToList().ForEach(i => fullString += (i.ToString()) + '\n');
             string resourceName = "EquipmentDatabase.Migrations.SeedData.STUDENT_MOCK_DATA.csv";
-
             using (Stream stream = assembly.GetManifestResourceStream(resourceName))
             {
                 using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
@@ -67,103 +49,74 @@ namespace EquipmentDatabase.Migrations
                     context.Students.AddOrUpdate(c => c.StudentID, students.ToArray());
                 }
             }
-
-
-            //var students = context.Students.ToList();
-
             var equipments = new List<Equipment> {};
-
             string resourceName2 = "EquipmentDatabase.Migrations.SeedData.EQUIPMENT_MOCK_DATA2.csv";
-
             using (Stream stream = assembly.GetManifestResourceStream(resourceName2))
             {
                 using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
                 {
-                        CsvReader csvReader = new CsvReader(reader);
-                        var equipments2 = csvReader.GetRecords<EquipmentDatabase.Models.TestClass>().ToArray();
-
-                    foreach (TestClass e in equipments2)
+                    CsvReader csvReader = new CsvReader(reader);
+                    var loadingData = csvReader.GetRecords<EquipmentDatabase.Models.LoadingClass>().ToArray();
+                    foreach (LoadingClass l in loadingData)
                     {
-                        //equipments.Add(new Equipment
-                        //{
-                        //    StudentID = students.Single(s => s.StudentID == e.StudentID).StudentID,
-                        //    DatePurchased = new DateTime(2017, 1, 1),
-                        //    DateAssigned = new DateTime(2017, 1, 1),
-                        //    EquipmentType = e.EquipmentType,
-                        //    ModelName = e.ModelName,
-                        //    Location = e.Location,
-                        //    Status = e.Status,
-                        //    Software = e.Software,
-                        //    ServiceTag = e.ServiceTag,
-                        //    Password = e.Password,
-                        //    Notes = e.Notes
-                        //});
-
                         Equipment myEquip = new Equipment
                         {
-                            DatePurchased = e.DatePurchased,
-                            DateAssigned = e.DateAssigned,
-                            EquipmentType = e.EquipmentType,
-                            ModelName = e.ModelName,
-                            Location = e.Location,
-                            Status = e.Status,
-                            Software = e.Software,
-                            ServiceTag = e.ServiceTag,
-                            Password = e.Password,
-                            Notes = e.Notes
+                            DatePurchased = l.DatePurchased,
+                            DateAssigned = l.DateAssigned,
+                            EquipmentType = l.EquipmentType,
+                            ModelName = l.ModelName,
+                            Location = l.Location,
+                            Status = l.Status,
+                            Software = l.Software,
+                            ServiceTag = l.ServiceTag,
+                            Password = l.Password,
+                            Notes = l.Notes
                         };
-
-                        if(e.StudentID != null)
+                        if(l.StudentID != null)
                         {
-                            myEquip.StudentID = students.Single(s => s.StudentID == e.StudentID).StudentID;
+                            myEquip.StudentID = students.Single(s => s.StudentID == l.StudentID).StudentID;
                         }
-
                         equipments.Add(myEquip);
-
                     }
                     foreach (Equipment e in equipments)
                     {
                         context.Equipments.Add(e);
+                        context.SaveChanges();
+
+                        Transaction newTransaction = new Transaction
+                        {
+                            EquipmentID = e.EquipmentID,
+                            TransactionDate = e.DatePurchased,
+                            TransactionType = TransactionType.Purchased
+                        };
+                        context.Transactions.Add(newTransaction);
+                        context.SaveChanges();
+                        if (e.StudentID != null)
+                        {
+                            var secondTransaction = newTransaction;
+                            secondTransaction.StudentID = students.Single(s => s.StudentID == e.StudentID).StudentID;
+                            secondTransaction.TransactionType = TransactionType.Assigned;
+                            secondTransaction.TransactionDate = secondTransaction.TransactionDate.AddMonths(3);
+                            context.Transactions.Add(secondTransaction);
+                            context.SaveChanges();
+                        }
+
+
+
                     }
-                    
-                    //context.Equipments.AddOrUpdate(c => c.StudentID, equipments.ToArray());
-                    //   for(var i = 0; i < 10; i++)
-                    //{
-                    //    testString = testString.Insert(0, testString + System.Environment.NewLine);
-                    //}
-                    //throw new Exception(testString);
+
+                    Transaction removedTransaction = new Transaction
+                    {
+                        EquipmentID = equipments.ElementAt(4).EquipmentID,
+                        StudentID = students.ElementAt(4).StudentID,
+                        TransactionType = TransactionType.Removed,
+                        TransactionDate = equipments.First<Equipment>().DatePurchased.AddMonths(1)
+                    };
+                    context.Transactions.Add(removedTransaction);
+                    context.SaveChanges();
 
                 }
             }
-
-
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-
-            //public OrderLine AddOrUpdate(WindyContext context, OrderLine orderLine)
-            //{
-            //    var trackedOrderLine = context.OrderLines.Find(orderLine.OrderId, orderLine.ProductId);
-            //    if (trackedOrderLine != null)
-            //    {
-            //        context.Entry(trackedOrderLine).CurrentValues.SetValues(orderLine);
-            //        return trackedOrderLine;
-            //    }
-
-            //    context.OrderLines.Add(orderLine);
-            //    return orderLine;
-            //    //}
-            //    private ProjectContext db = new ProjectContext();
-            //var equipments = db.Equipments.Include(e => e.EquipmentID);
-
-            //    //context.Equipments.AddOrUpdate(
-            //    //  p => p.DatePurchased,
-            //    //    { this.DatePurchased = "2007"}
-
-            //);
-
         }
     }
 }

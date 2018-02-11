@@ -1,0 +1,73 @@
+﻿
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+
+@section Scripts {
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+    <script type='text/javascript'>
+
+        function showLoadedTable() {
+            $("#table-id").DataTable({
+                "initComplete": function (settings, json) {
+                    preloaderFadeOutTime = 500;
+                    function hidePreloader() {
+                        var preloader = $(".spinner-wrapper");
+                        preloader.fadeOut(preloaderFadeOutTime);     
+                    }
+                    hidePreloader();
+                    $("#panel-wrapper").hide();
+                    $("#table-id").show();
+                    $("footer").show();
+                },
+                "pageLength": 50,
+                "columns": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    {
+                        "orderable": false}
+                ]
+            });
+        }
+        $(document).ready(function () {
+            $("footer").hide();
+        });
+
+        $.ajax({
+            url: '/transaction/ajaxtransactiontable',
+            success: function success(data) {
+                $("#table-id").html(data);
+                showLoadedTable();
+            },
+            cache: false,
+            error: function error(jqXHR, errorMessage, errorThrown) {
+                console.log(errorMessage);
+            }
+        });
+    </script>
+}
+<h2>Transaction Index</h2>
+
+<div class="panel panel-default" id="panel-wrapper">
+    <div class="panel-body">
+        Loading data...
+    </div>
+</div>
+
+<div class="spinner-wrapper">
+    <div class="sk-cube-grid">
+        <div class="sk-cube sk-cube1"></div>
+        <div class="sk-cube sk-cube2"></div>
+        <div class="sk-cube sk-cube3"></div>
+        <div class="sk-cube sk-cube4"></div>
+        <div class="sk-cube sk-cube5"></div>
+        <div class="sk-cube sk-cube6"></div>
+        <div class="sk-cube sk-cube7"></div>
+        <div class="sk-cube sk-cube8"></div>
+        <div class="sk-cube sk-cube9"></div>
+    </div>
+</div>
+
+
+<table class="display" id="table-id"></table>

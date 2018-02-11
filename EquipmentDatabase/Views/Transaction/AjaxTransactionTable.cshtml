@@ -1,0 +1,50 @@
+﻿@model IEnumerable<EquipmentDatabase.Models.Transaction>
+
+<thead>
+    <tr>
+        <th>Transaction Type</th>
+        <th>Equipment Type</th>
+        <th> Student ID</th>
+        <th>First Name</th>
+        <th>Second Name</th>
+        <th>Options</th>
+    </tr>
+</thead>
+<tbody>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Equipment.EquipmentType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentID)
+            </td>
+            <td>
+            @if (item.Student != null)
+            {
+                @Html.DisplayFor(modelItem => item.Student.FirstMidName);
+            }
+            </td>
+            <td>
+                @if (item.Student != null)
+                {
+                    @Html.DisplayFor(modelItem => item.Student.LastName);
+                }
+            </td>
+            <td>
+@if (item.Student != null)
+{
+                @Html.ActionLink("View Student", "Details", "Student", new { id = item.StudentID }, htmlAttributes: new { @class = "btn btn-primary" })
+}
+                @Html.ActionLink("View Equipment", "Details", "Equipment", new { id = item.EquipmentID }, htmlAttributes: new { @class = "btn btn-primary" })
+            </td>
+
+        </tr>
+                    }
+
+</tbody>

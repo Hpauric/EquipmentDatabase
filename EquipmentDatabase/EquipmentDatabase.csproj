@@ -200,6 +200,18 @@
     <Compile Include="Migrations\201802090726521_dates-added-to-testclass.Designer.cs">
       <DependentUpon>201802090726521_dates-added-to-testclass.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802111333572_databasegenerated-none-data-attribute-added-toequipmentid.cs" />
+    <Compile Include="Migrations\201802111333572_databasegenerated-none-data-attribute-added-toequipmentid.Designer.cs">
+      <DependentUpon>201802111333572_databasegenerated-none-data-attribute-added-toequipmentid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802111336050_revert-databasegeneratedequipment-option.cs" />
+    <Compile Include="Migrations\201802111336050_revert-databasegeneratedequipment-option.Designer.cs">
+      <DependentUpon>201802111336050_revert-databasegeneratedequipment-option.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802111402054_purchased-added-to-transaction-type.cs" />
+    <Compile Include="Migrations\201802111402054_purchased-added-to-transaction-type.Designer.cs">
+      <DependentUpon>201802111402054_purchased-added-to-transaction-type.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\TestClass.cs" />
     <Compile Include="Models\Equipment.cs" />
@@ -244,6 +256,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802090726521_dates-added-to-testclass.resx">
       <DependentUpon>201802090726521_dates-added-to-testclass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802111333572_databasegenerated-none-data-attribute-added-toequipmentid.resx">
+      <DependentUpon>201802111333572_databasegenerated-none-data-attribute-added-toequipmentid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802111336050_revert-databasegeneratedequipment-option.resx">
+      <DependentUpon>201802111336050_revert-databasegeneratedequipment-option.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802111402054_purchased-added-to-transaction-type.resx">
+      <DependentUpon>201802111402054_purchased-added-to-transaction-type.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\SeedData\STUDENT_MOCK_DATA.csv" />
     <EmbeddedResource Include="Migrations\SeedData\EQUIPMENT_MOCK_DATA.csv" />
@@ -306,6 +327,8 @@
     <Content Include="Views\Transaction\Details.cshtml" />
     <Content Include="Views\Transaction\Edit.cshtml" />
     <Content Include="Views\Transaction\Index.cshtml" />
+    <Content Include="Views\Transaction\AjaxIndex.cshtml" />
+    <Content Include="Views\Transaction\AjaxTransactionTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
