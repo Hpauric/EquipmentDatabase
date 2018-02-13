@@ -157,6 +157,10 @@ p.about-page {
     margin-top: 20px;
 }
 
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    cursor: default;
+}
+
 @media only screen and (max-width: 1000px) {
     img {
         display: none;
@@ -168,3 +172,4 @@ p.about-page {
         position: static;
     }
 }
+
