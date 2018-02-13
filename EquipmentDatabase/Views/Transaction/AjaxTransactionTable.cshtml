@@ -2,6 +2,7 @@
 
 <thead>
     <tr>
+        <th>Date</th>
         <th>Transaction Type</th>
         <th>Equipment Type</th>
         <th> Student ID</th>
@@ -15,6 +16,9 @@
     @foreach (var item in Model)
     {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionDate)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TransactionType)
             </td>
@@ -37,10 +41,16 @@
                 }
             </td>
             <td>
-@if (item.Student != null)
-{
-                @Html.ActionLink("View Student", "Details", "Student", new { id = item.StudentID }, htmlAttributes: new { @class = "btn btn-primary" })
-}
+                @{
+                    if (item.Student != null)
+                    {
+                        @Html.ActionLink("View Student", "Details", "Student", new { id = item.StudentID }, htmlAttributes: new { @class = "btn btn-primary" })
+                    }
+                    else
+                    {
+                      <a class="btn btn-primary disabled">View Student</a>
+                    }
+                }
                 @Html.ActionLink("View Equipment", "Details", "Equipment", new { id = item.EquipmentID }, htmlAttributes: new { @class = "btn btn-primary" })
             </td>
 
