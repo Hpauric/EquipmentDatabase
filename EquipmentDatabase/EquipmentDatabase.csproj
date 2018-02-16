@@ -213,7 +213,7 @@
       <DependentUpon>201802111402054_purchased-added-to-transaction-type.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\TestClass.cs" />
+    <Compile Include="Models\LoadingClass.cs" />
     <Compile Include="Models\Equipment.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Transaction.cs" />
