@@ -19,6 +19,11 @@ namespace EquipmentDatabase.DAL
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
+            modelBuilder.Entity<Transaction>()
+                .HasOptional<Student>(t => t.Student)
+                .WithMany()
+                .WillCascadeOnDelete(false);
+
             //modelBuilder.Entity<Equipment>()
             //    .HasOptional<Student>(s => s.Student)
             //    .WithMany()
