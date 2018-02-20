@@ -55,7 +55,7 @@ namespace EquipmentDatabase.Controllers
 
         // GET: Student/Delete/5
 
-        public ActionResult Delete(int? id, bool? saveChangesError = false)
+        public ActionResult Delete(int? id, bool? saveChangesError = false, string errorMessage = "")
         {
             if (id == null)
             {
@@ -63,7 +63,7 @@ namespace EquipmentDatabase.Controllers
             }
             if (saveChangesError.GetValueOrDefault())
             {
-                ViewBag.ErrorMessage = "Delete failed. Try again, and if the problem persists see your system administrator.";
+                ViewBag.ErrorMessage = errorMessage;
             }
 
             Student student = db.Students.Find(id);
@@ -82,8 +82,8 @@ namespace EquipmentDatabase.Controllers
         {
             try
             {
+
                 Student student = db.Students
-           .Include(i => i.Equipment)
            .Where(i => i.StudentID == id)
             .Single();
 
@@ -92,22 +92,29 @@ namespace EquipmentDatabase.Controllers
                     return HttpNotFound();
                 }
 
-                db.Students.Remove(student);
-
                 var equipment = db.Equipments
                     .Where(d => d.StudentID == id)
                     .SingleOrDefault();
                 if (equipment != null)
                 {
                     equipment.StudentID = null;
+                    student.Equipment.Remove(equipment);
+                    db.Entry(equipment).State = EntityState.Modified;
+                    db.Entry(student).State = EntityState.Modified;
+                    db.SaveChanges();
                 }
+                
 
-                db.SaveChanges();
+                //db.Students.Remove(student);
+
+                //db.SaveChanges();
             }
-            catch (DataException/* dex */)
+            catch (DataException dex )
             {
+                Console.WriteLine(dex.InnerException.ToString());
+                
                 //Log the error (uncomment dex variable name and add a line here to write a log.
-                return RedirectToAction("Delete", new { id = id, saveChangesError = true });
+                return RedirectToAction("Delete", new { id = id, saveChangesError = true, errorMessage = dex.InnerException.ToString() });
             }
             return RedirectToAction("Index");
         }
