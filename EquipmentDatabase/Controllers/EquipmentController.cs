@@ -208,7 +208,6 @@ namespace EquipmentDatabase.Controllers
                 }
                 catch (DataException dex)
                 {
-
                     ModelState.AddModelError("", dex.ToString() + '\n' +
                         dex.Message + '\n' + dex.Source + '\n' +
                         dex.TargetSite + '\n' + dex.HelpLink + '\n' +
@@ -219,8 +218,6 @@ namespace EquipmentDatabase.Controllers
             return View(equipment);
         }
 
-
-        // GET: Equipment
         public ActionResult Index()
         {
             try
@@ -230,12 +227,10 @@ namespace EquipmentDatabase.Controllers
             }
             catch (DataException dex)
             {
-                //Log the error (uncomment dex variable name and add a line here to write a log.
                 System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
                 System.Diagnostics.Trace.TraceError(dex.Message);
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
                 return View("Error");
-                // return dex.Message;
             }
         }
 
@@ -265,13 +260,11 @@ namespace EquipmentDatabase.Controllers
             }
             catch (DataException dex)
             {
-
                 ModelState.AddModelError("", dex.ToString() + '\n' +
                     dex.Message + '\n' + dex.Source + '\n' +
                     dex.TargetSite + '\n' + dex.HelpLink + '\n' +
                     dex.InnerException);
             }
-
             return View("Error");
         }
 
@@ -283,25 +276,19 @@ namespace EquipmentDatabase.Controllers
 
             try
             {
-
                 var query = from e in db.Equipments
                             where e.StudentID == null
                             select e;
 
-
-
-                //var equipments = db.Equipments.Include(e => e.StudentID == null);
                 return View(query);
 
             }
             catch (DataException dex)
             {
-                //Log the error (uncomment dex variable name and add a line here to write a log.
                 System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
                 System.Diagnostics.Trace.TraceError(dex.Message);
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
                 return View("Error");
-                // return dex.Message;
             }
         }
 
