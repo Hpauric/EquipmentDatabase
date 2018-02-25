@@ -212,6 +212,22 @@
     <Compile Include="Migrations\201802111402054_purchased-added-to-transaction-type.Designer.cs">
       <DependentUpon>201802111402054_purchased-added-to-transaction-type.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802241225062_new-fluent-configuration.cs" />
+    <Compile Include="Migrations\201802241225062_new-fluent-configuration.Designer.cs">
+      <DependentUpon>201802241225062_new-fluent-configuration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802241234384_new-fluent-configuration2.cs" />
+    <Compile Include="Migrations\201802241234384_new-fluent-configuration2.Designer.cs">
+      <DependentUpon>201802241234384_new-fluent-configuration2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802241238129_new-fluent-configuration3.cs" />
+    <Compile Include="Migrations\201802241238129_new-fluent-configuration3.Designer.cs">
+      <DependentUpon>201802241238129_new-fluent-configuration3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802241319122_new-test-fluent-api-configuration.cs" />
+    <Compile Include="Migrations\201802241319122_new-test-fluent-api-configuration.Designer.cs">
+      <DependentUpon>201802241319122_new-test-fluent-api-configuration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LoadingClass.cs" />
     <Compile Include="Models\Equipment.cs" />
@@ -265,6 +281,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802111402054_purchased-added-to-transaction-type.resx">
       <DependentUpon>201802111402054_purchased-added-to-transaction-type.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802241225062_new-fluent-configuration.resx">
+      <DependentUpon>201802241225062_new-fluent-configuration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802241234384_new-fluent-configuration2.resx">
+      <DependentUpon>201802241234384_new-fluent-configuration2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802241238129_new-fluent-configuration3.resx">
+      <DependentUpon>201802241238129_new-fluent-configuration3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802241319122_new-test-fluent-api-configuration.resx">
+      <DependentUpon>201802241319122_new-test-fluent-api-configuration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\SeedData\STUDENT_MOCK_DATA.csv" />
     <EmbeddedResource Include="Migrations\SeedData\EQUIPMENT_MOCK_DATA.csv" />

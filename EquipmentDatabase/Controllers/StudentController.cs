@@ -86,35 +86,20 @@ namespace EquipmentDatabase.Controllers
                 Student student = db.Students
            .Where(i => i.StudentID == id)
             .Single();
-
                 if (student == null)
                 {
                     return HttpNotFound();
                 }
-
-                var equipment = db.Equipments
-                    .Where(d => d.StudentID == id)
-                    .SingleOrDefault();
-                if (equipment != null)
-                {
-                    equipment.StudentID = null;
-                    student.Equipment.Remove(equipment);
-                    db.Entry(equipment).State = EntityState.Modified;
-                    db.Entry(student).State = EntityState.Modified;
-                    db.SaveChanges();
-                }
-                
-
-                //db.Students.Remove(student);
-
-                //db.SaveChanges();
+                db.Entry(student).Collection(s => s.Equipment).Load();
+                db.Entry(student).Collection(s => s.Transaction).Load();
+                db.Students.Remove(student);
+                db.SaveChanges();
             }
             catch (DataException dex )
             {
-                Console.WriteLine(dex.InnerException.ToString());
+                Console.WriteLine(dex.Message.ToString());
                 
-                //Log the error (uncomment dex variable name and add a line here to write a log.
-                return RedirectToAction("Delete", new { id = id, saveChangesError = true, errorMessage = dex.InnerException.ToString() });
+                return RedirectToAction("Delete", new { id = id, saveChangesError = true, errorMessage = dex.Message.ToString() });
             }
             return RedirectToAction("Index");
         }
